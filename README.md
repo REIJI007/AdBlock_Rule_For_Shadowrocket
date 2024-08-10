@@ -19,7 +19,7 @@
 
 *1、适用于Shadowrocket的外部远程域名CONF格式拦截RULE-SET规则集 adblock_reject_shadowrocket_ruleset.conf* 
 <br>
-
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_ruleset.conf*
 
 
 
