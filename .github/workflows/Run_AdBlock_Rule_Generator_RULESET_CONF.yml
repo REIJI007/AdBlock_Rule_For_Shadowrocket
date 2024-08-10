@@ -1,5 +1,4 @@
-name: Run_AdBlock_Rule_Generator_RULESET_CONF  # 工作流名称
-
+name: Run_AdBlock_Rule_Generator_RULESET_CONF
 on:
   schedule:
     - cron: '*/20 * * * *'  # 每20分钟运行一次
@@ -7,41 +6,61 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # 使用最新的 Ubuntu 版本作为运行环境
-
+    runs-on: ubuntu-latest
     steps:
-    - name: Setup Node.js 20  # 设置 Node.js 20 环境
-      uses: actions/setup-node@v3  # 使用官方的 setup-node 操作来设置 Node.js 环境
+    - name: Setup Node.js 20
+      uses: actions/setup-node@v3
       with:
-        node-version: '20'  # 指定使用 Node.js 版本 20
+        node-version: '20'
 
-    - name: Checkout repository  # 检出代码仓库
-      uses: actions/checkout@v3  # 使用官方的 checkout 操作来检出代码
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-    - name: Install PowerShell 7  # 安装 PowerShell 7
+    - name: Install PowerShell 7
       run: |
-        sudo apt-get update  # 更新包列表
-        sudo apt-get install -y wget apt-transport-https software-properties-common  # 安装必要的包
-        wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb  # 下载微软的包配置文件
-        sudo dpkg -i packages-microsoft-prod.deb  # 安装包配置文件
-        sudo apt-get update  # 更新包列表
-        sudo apt-get install -y powershell  # 安装 PowerShell 7
-        rm packages-microsoft-prod.deb  # 删除包配置文件
+        sudo apt-get update
+        sudo apt-get install -y wget apt-transport-https software-properties-common
+        wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
+        sudo dpkg -i packages-microsoft-prod.deb
+        sudo apt-get update
+        sudo apt-get install -y powershell
+        rm packages-microsoft-prod.deb
 
-    - name: Run adblock_rule_generator_shadowrocket_conf.ps1  # 运行 adblock_rule_generator_shadowrocket_conf.ps1 脚本
-      run: pwsh -File ./adblock_rule_generator_shadowrocket_conf.ps1  # 使用 PowerShell 7 运行脚本
+    - name: Run adblock_rule_generator_shadowrocket_conf.ps1
+      run: pwsh -File ./adblock_rule_generator_shadowrocket_conf.ps1
 
-    - name: Force Add and Commit CONF file  # 强制添加并提交 CONF 文件
+    - name: Force Add and Commit CONF file
       run: |
-        git config --global user.name 'github-actions'  # 配置提交用户名
-        git config --global user.email 'github-actions@github.com'  # 配置提交邮箱
-        git add -f adblock_reject_shadowrocket_ruleset.conf  # 强制添加 adblock_reject_shadowrocket_ruleset.conf 文件
-        git commit -m 'Update adblock_reject_shadowrocket_ruleset.conf' || git commit --allow-empty -m 'Empty commit to force push'  # 提交更改，若无更改则提交空更改
+        git config --global user.name 'github-actions'
+        git config --global user.email 'github-actions@github.com'
+        git add -f adblock_reject_shadowrocket_ruleset.conf
+        git commit -m 'Update adblock_reject_shadowrocket_ruleset.conf' || git commit --allow-empty -m 'Empty commit to force push'
 
-    - name: Retry Push CONF file  # 推送 CONF 文件，失败时重试
+    - name: Push CONF file with TOKEN
       env:
-        TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 密钥进行身份验证
+        TOKEN: ${{ secrets.TOKEN }}
       run: |
-        for i in {1..5}; do  # 尝试最多5次
-          git push --force origin HEAD && exit 0 || (echo "Push failed, retrying in 10 seconds..." && sleep 10)
+        git remote set-url origin https://${TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        for i in {1..5}; do
+          if git push --force origin HEAD; then
+            echo "Push successful"
+            exit 0
+          else
+            echo "Push failed (attempt $i), error:"
+            git push --force origin HEAD 2>&1
+            if [ $i -lt 5 ]; then
+              echo "Retrying in 30 seconds..."
+              sleep 30
+            fi
+          fi
         done
+        echo "All push attempts failed"
+        exit 1
+
+    - name: Debug information (if push fails)
+      if: failure()
+      run: |
+        pwd
+        ls -la
+        git status
+        git log --oneline -n 5
