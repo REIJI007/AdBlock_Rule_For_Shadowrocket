@@ -16,13 +16,27 @@
 </p>
 
 **一、从多个广告过滤器中提取拦截域名条目，删除重复项，并将它们转换为兼容Shadowrocket的列表格式，其中列表的每一项都写成了Matcher Ruleset格式数组，一行仅一条规则。该列表可以用作Shadowrocket的RULE-SET以阻止广告域名， powershell脚本每20分钟自动执行并将生成的文件发布在release中.**
-
+<br>
 *1、适用于Shadowrocket的外部远程域名CONF格式拦截RULE-SET规则集 adblock_reject_shadowrocket_ruleset.conf* 
 <br>
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_ruleset.conf*
-
-
-
+*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.conf*
+<br>
+*2、适用于Shadowrocket的外部远程域名LIST格式拦截RULE-SET规则集 adblock_reject_shadowrocket_ruleset.list* 
+<br>
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_ruleset.list*
+*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.list*
+<br>
+*3、适用于Shadowrocket的外部远程域名TXT格式拦截RULE-SET规则集 adblock_reject_shadowrocket_ruleset.txt* 
+<br>
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_ruleset.txt*
+*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.txt*
+<br>
+*4、适用于Shadowrocket的外部远程域名YAML格式拦截RULE-SET规则集 adblock_reject_shadowrocket_ruleset.yaml* 
+<br>
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_ruleset.yaml*
+*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.yaml*
+<br>
 
 
 
