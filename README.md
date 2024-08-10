@@ -53,6 +53,7 @@
 *简而言之就是可以让你DIY出希望得到的拦截域名Matcher Ruleset列表，缺点是此做法只适合本地定制使用，当然你也可以像本仓库一样部署到GitHub上面，见仁见智*
 <hr>
 
+
 ```conf
 #适用于Shadowrocket的外部本地拦截域名规则集
 [Rule]
@@ -88,6 +89,8 @@ RULE-SET,C:\Users\YourUsername\Documents\file.yaml,REJECT  #你的外部本地�
   *使用方式一：下载releases中的adblock_reject_surge_ruleset.txt文件或者adblock_reject_surge_domainset.txt，里面的内容可直接粘贴到Surge的配置中的[rules]字段下作为拦截规则（需要手动下载更新）*
 
   *使用方式二：将下面对应格式的配置文件中[rule]字段内容添加到你的配置文件充当远程规则集，需要特别注意配置文件的缩进和对齐（同步本仓库的云端部署的远程规则集配置)*
+<hr>
+
 
 
   
@@ -114,6 +117,8 @@ RULE-SET,https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main
 
 
 
+
+<hr>
 
 **五、关于本仓库的使用效果为什么没有普通广告过滤器效果好的疑问解答：**
 <br>
