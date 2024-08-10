@@ -53,30 +53,29 @@
 *简而言之就是可以让你DIY出希望得到的拦截域名Matcher Ruleset列表，缺点是此做法只适合本地定制使用，当然你也可以像本仓库一样部署到GitHub上面，见仁见智*
 <hr>
 
-
 ```conf
 #适用于Shadowrocket的外部本地拦截域名规则集
 [Rule]
 RULE-SET,C:\Users\YourUsername\Documents\file.conf,REJECT  #你的外部本地拦截域名conf格式规则集文件保存路径
 ```
+
 ```conf
 #适用于Shadowrocket的外部本地拦截域名规则集
 [Rule]
 RULE-SET,C:\Users\YourUsername\Documents\file.list,REJECT  #你的外部本地拦截域名list格式规则集文件保存路径
 ```
+
 ```conf
 #适用于Shadowrocket的外部本地拦截域名规则集
 [Rule]
 RULE-SET,C:\Users\YourUsername\Documents\file.txt,REJECT  #你的外部本地拦截域名txt格式规则集文件保存路径
 ```
+
 ```conf
 #适用于Shadowrocket的外部本地拦截域名规则集
 [Rule]
 RULE-SET,C:\Users\YourUsername\Documents\file.yaml,REJECT  #你的外部本地拦截域名yaml格式规则集文件保存路径
 ```
-
-
-
 <hr>
 
 
