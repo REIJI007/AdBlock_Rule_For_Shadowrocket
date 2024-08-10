@@ -52,7 +52,7 @@
 <br>
 *简而言之就是可以让你DIY出希望得到的拦截域名Matcher Ruleset列表，缺点是此做法只适合本地定制使用，当然你也可以像本仓库一样部署到GitHub上面，见仁见智*
 
-
+<hr>
 ```conf
 #适用于Shadowrocket的外部本地拦截域名规则集
 [Rule]
@@ -74,7 +74,7 @@ RULE-SET,C:\Users\YourUsername\Documents\file.txt,REJECT  #你的外部本地拦
 RULE-SET,C:\Users\YourUsername\Documents\file.yaml,REJECT  #你的外部本地拦截域名yaml格式规则集文件保存路径
 ```
 
-
+<hr>
 
 
 **三、本仓库引用多个广告过滤器，从这些广告过滤器中提取了被拦截条目的域名，剔除了非拦截项并去重，最后做成Matcher Ruleset列表，虽无法做到面面俱到但能减少广告带来的困扰，请自行斟酌考虑使用。碍于surge的路由行为且秉持着尽可能不误杀的原则，本仓库采取域名完全匹配策略，即匹配命中于拦截列表上的域名完全一致时触发拦截，除此之外的情况给予放行。尽管这会有许多漏网之鱼的广告被放行**
@@ -88,7 +88,7 @@ RULE-SET,C:\Users\YourUsername\Documents\file.yaml,REJECT  #你的外部本地�
 
 
   *使用方式二：将下面对应格式的配置文件中[rule]字段内容添加到你的配置文件充当远程规则集，需要特别注意配置文件的缩进和对齐（同步本仓库的云端部署的远程规则集配置)*
-
+<hr>
 ```conf
 #适用于Shadowrocket的conf格式RULE-SET
 [Rule]
@@ -109,7 +109,7 @@ RULE-SET,https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main
 [Rule]
 RULE-SET,https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.yaml,REJECT
 ```
-
+<hr>
 
 
 **五、关于本仓库的使用效果为什么没有普通广告过滤器效果好的疑问解答：**
