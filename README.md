@@ -51,10 +51,24 @@
 
 
 ```conf
-#适用于Surge的外部本地拦截域名规则集
+#适用于Shadowrocket的外部本地拦截域名规则集
 [Rule]
-RULE-SET,C:\Users\YourUsername\Documents\file.txt,REJECT  #你的外部本地拦截域名规则集文件保存路径
-
+RULE-SET,C:\Users\YourUsername\Documents\file.conf,REJECT  #你的外部本地拦截域名conf规则集文件保存路径
+```
+```conf
+#适用于Shadowrocket的外部本地拦截域名规则集
+[Rule]
+RULE-SET,C:\Users\YourUsername\Documents\file.list,REJECT  #你的外部本地拦截域名list格式规则集文件保存路径
+```
+```conf
+#适用于Shadowrocket的外部本地拦截域名规则集
+[Rule]
+RULE-SET,C:\Users\YourUsername\Documents\file.txt,REJECT  #你的外部本地拦截域名txt格式规则集文件保存路径
+```
+```conf
+#适用于Shadowrocket的外部本地拦截域名规则集
+[Rule]
+RULE-SET,C:\Users\YourUsername\Documents\file.yaml,REJECT  #你的外部本地拦截域名yaml格式规则集文件保存路径
 ```
 
 
@@ -73,22 +87,31 @@ RULE-SET,C:\Users\YourUsername\Documents\file.txt,REJECT  #你的外部本地拦
   *使用方式二：将下面对应格式的配置文件中[rule]字段内容添加到你的配置文件充当远程规则集，需要特别注意配置文件的缩进和对齐（同步本仓库的云端部署的远程规则集配置)*
 
 ```conf
-#适用于Surge的RULE-SET
+#适用于Shadowrocket的conf格式RULE-SET
 [Rule]
-RULE-SET,https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Surge@main/adblock_reject_surge_ruleset.txt,REJECT
+RULE-SET,https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.conf,REJECT
 ```
 ```conf
-#适用于Surge的DOMAIN-SET
+#适用于Shadowrocket的list格式RULE-SET
 [Rule]
-RULE-SET,https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Surge@main/adblock_reject_surge_domainset.txt,REJECT
+RULE-SET,https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.list,REJECT
 ```
-
+```conf
+#适用于Shadowrocket的txt格式RULE-SET
+[Rule]
+RULE-SET,https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.txt,REJECT
+```
+```conf
+#适用于Shadowrocket的yaml格式RULE-SET
+[Rule]
+RULE-SET,https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.yaml,REJECT
+```
 
 
 
 **五、关于本仓库的使用效果为什么没有普通广告过滤器效果好的疑问解答：**
 <br>
-*因为普通的广告过滤器包含域名过滤（拦截广告域名）、路径过滤（例如拦截URL路径中包含/ads/的所有请求）、正则表达式过滤（例如拦截所有包含ads.js或ad.js的URL）、类型过滤（例如只拦截图片资源）、隐藏元素等等多因素作用下使得在广告拦截测试网站中可以取得高分。**但碍于surge的路由行为（可分别参考相关文档）**，本仓库仅提取了被拦截域名进行域名完全匹配过滤，换言之，本仓库就是一个“删减版”的广告过滤器（仅保留了域名完全匹配过滤功能，规则数在70万条左右），所以最终效果没有广告过滤器效果好*
+*因为普通的广告过滤器包含域名过滤（拦截广告域名）、路径过滤（例如拦截URL路径中包含/ads/的所有请求）、正则表达式过滤（例如拦截所有包含ads.js或ad.js的URL）、类型过滤（例如只拦截图片资源）、隐藏元素等等多因素作用下使得在广告拦截测试网站中可以取得高分。**但碍于shadowrocket的路由行为（可分别参考相关文档）**，本仓库仅提取了被拦截域名进行域名完全匹配过滤，换言之，本仓库就是一个“删减版”的广告过滤器（仅保留了域名完全匹配过滤功能，规则数在70万条左右），所以最终效果没有广告过滤器效果好*
 
 
 
