@@ -11,41 +11,41 @@ jobs:
 
     steps:
     - name: Setup Node.js 20  # 设置 Node.js 20 环境
-      uses: actions/setup-node@v3  # 使用官方的 setup-node 操作来设置 Node.js 环境
+      uses: actions/setup-node@v3
       with:
-        node-version: '20'  # 指定使用 Node.js 版本 20
+        node-version: '20'
 
     - name: Checkout repository  # 检出代码仓库
-      uses: actions/checkout@v3  # 使用官方的 checkout 操作来检出代码
+      uses: actions/checkout@v3
       with:
         token: ${{ secrets.TOKEN }}  # 使用 TOKEN 进行检出，以确保有足够的权限
 
     - name: Install PowerShell 7  # 安装 PowerShell 7
       run: |
-        sudo apt-get update  # 更新包列表
-        sudo apt-get install -y wget apt-transport-https software-properties-common  # 安装必要的包
-        wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb  # 下载微软的包配置文件
-        sudo dpkg -i packages-microsoft-prod.deb  # 安装包配置文件
-        sudo apt-get update  # 更新包列表
-        sudo apt-get install -y powershell  # 安装 PowerShell 7
-        rm packages-microsoft-prod.deb  # 删除包配置文件
+        sudo apt-get update
+        sudo apt-get install -y wget apt-transport-https software-properties-common
+        wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
+        sudo dpkg -i packages-microsoft-prod.deb
+        sudo apt-get update
+        sudo apt-get install -y powershell
+        rm packages-microsoft-prod.deb
 
-    - name: Run adblock_rule_generator_shadowrocket_conf.ps1  # 运行 adblock_rule_generator_shadowrocket_conf.ps1 脚本
-      run: pwsh -File ./adblock_rule_generator_shadowrocket_conf.ps1  # 使用 PowerShell 7 运行脚本
+    - name: Run adblock_rule_generator_shadowrocket_conf.ps1  # 运行位于根目录的脚本
+      run: pwsh -File ./adblock_rule_generator_shadowrocket_conf.ps1
 
-    - name: Force Add and Commit CONF file  # 强制添加并提交 CONF 文件
+    - name: Force Add and Commit CONF file
       run: |
-        git config --global user.name 'github-actions[bot]'  # 配置提交用户名
-        git config --global user.email 'github-actions[bot]@users.noreply.github.com'  # 配置提交邮箱
-        git add -f adblock_reject_shadowrocket_ruleset.conf  # 强制添加 adblock_reject_shadowrocket_ruleset.conf 文件
-        git commit -m 'Update adblock_reject_shadowrocket_ruleset.conf' || git commit --allow-empty -m 'Empty commit to force push'  # 提交更改，若无更改则提交空更改
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add -f adblock_reject_shadowrocket_ruleset.conf
+        git commit -m 'Update adblock_reject_shadowrocket_ruleset.conf' || git commit --allow-empty -m 'Empty commit to force push'
 
-    - name: Push CONF file with TOKEN  # 使用 TOKEN 推送 CONF 文件
+    - name: Push CONF file with TOKEN
       env:
-        TOKEN: ${{ secrets.TOKEN }}  # 使用 GitHub 密钥进行身份验证
+        TOKEN: ${{ secrets.TOKEN }}
       run: |
         git remote set-url origin https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-        for i in {1..5}; do  # 尝试最多5次
+        for i in {1..5}; do
           if git push --force origin HEAD; then
             echo "Push successful"
             exit 0
@@ -61,7 +61,7 @@ jobs:
         echo "All push attempts failed"
         exit 1
 
-    - name: Debug information (if push fails)  # 如果推送失败，输出调试信息
+    - name: Debug information (if push fails)
       if: failure()
       run: |
         pwd
