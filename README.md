@@ -56,7 +56,7 @@
 ```conf
 #适用于Shadowrocket的外部本地拦截域名规则集
 [Rule]
-RULE-SET,C:\Users\YourUsername\Documents\file.conf,REJECT  #你的外部本地拦截域名conf规则集文件保存路径
+RULE-SET,C:\Users\YourUsername\Documents\file.conf,REJECT  #你的外部本地拦截域名conf格式规则集文件保存路径
 ```
 ```conf
 #适用于Shadowrocket的外部本地拦截域名规则集
