@@ -1,26 +1,25 @@
-name: Run_AdBlock_Rule_Generator_RULESET_CONF  # 工作流名称
+name: Run_AdBlock_Rule_Generator_RULESET_CONF
 
 on:
   schedule:
-    - cron: '*/20 * * * *'  # 每20分钟运行一次
-  workflow_dispatch:  # 允许手动触发工作流
+    - cron: '*/20 * * * *'
+  workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # 使用最新的 Ubuntu 版本作为运行环境
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Setup Node.js 20  # 设置 Node.js 20 环境
+    - name: Setup Node.js 20
       uses: actions/setup-node@v3
       with:
         node-version: '20'
 
-    - name: Checkout repository  # 检出代码仓库
+    - name: Checkout repository
       uses: actions/checkout@v3
-      with:
-        token: ${{ secrets.TOKEN }}  # 使用 TOKEN 进行检出，以确保有足够的权限
+      # 移除了 token 参数
 
-    - name: Install PowerShell 7  # 安装 PowerShell 7
+    - name: Install PowerShell 7
       run: |
         sudo apt-get update
         sudo apt-get install -y wget apt-transport-https software-properties-common
@@ -30,7 +29,7 @@ jobs:
         sudo apt-get install -y powershell
         rm packages-microsoft-prod.deb
 
-    - name: Run adblock_rule_generator_shadowrocket_conf.ps1  # 运行位于根目录的脚本
+    - name: Run adblock_rule_generator_shadowrocket_conf.ps1
       run: pwsh -File ./adblock_rule_generator_shadowrocket_conf.ps1
 
     - name: Force Add and Commit CONF file
