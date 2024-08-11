@@ -19,7 +19,7 @@ jobs:
           files=("adblock_reject_shadowrocket_ruleset.conf" "adblock_reject_shadowrocket_ruleset.list" "adblock_reject_shadowrocket_ruleset.txt" "adblock_reject_shadowrocket_ruleset.yaml")
           # 遍历并处理每个文件
           for file in "${files[@]}"; do
-            # 生成目标文件名
+            # 生成目标文件名 (将 ruleset 替换为 domainset)
             output_file=$(echo "$file" | sed 's/ruleset/domainset/')
             # 处理文件：忽略注释和 "payload:"，删除 "DOMAIN," 并左对齐
             grep -vE '^#|^payload:' "$file" | sed 's/DOMAIN,//g' > "$output_file"
@@ -31,6 +31,12 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+
+          # 添加处理后的文件
           git add adblock_reject_shadowrocket_domainset.*
-          git commit -m "Processed and generated Shadowrocket domainset files"
+
+          # 提交更改或进行空提交以保持工作流运行
+          git commit -m "Processed and generated Shadowrocket domainset files" || git commit --allow-empty -m "No changes, empty commit to keep the workflow running"
+
+          # 强制推送
           git push --force "https://${TOKEN}@github.com/${{ github.repository }}.git" HEAD:main
