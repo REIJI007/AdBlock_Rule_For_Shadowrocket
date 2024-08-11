@@ -1,4 +1,4 @@
-name: Process Ruleset Files
+name: Convert the Ruleset files into Domainset files
 
 # 触发条件
 on:
