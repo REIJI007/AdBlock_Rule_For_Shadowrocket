@@ -1,0 +1,36 @@
+name: Process Shadowrocket Ruleset Files
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  process_files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Process Shadowrocket Ruleset Files
+        run: |
+          # 定义要处理的文件名
+          files=("adblock_reject_shadowrocket_ruleset.conf" "adblock_reject_shadowrocket_ruleset.list" "adblock_reject_shadowrocket_ruleset.txt" "adblock_reject_shadowrocket_ruleset.yaml")
+          # 遍历并处理每个文件
+          for file in "${files[@]}"; do
+            # 生成目标文件名
+            output_file=$(echo "$file" | sed 's/ruleset/domainset/')
+            # 处理文件：忽略注释和 "payload:"，删除 "DOMAIN," 并左对齐
+            grep -vE '^#|^payload:' "$file" | sed 's/DOMAIN,//g' > "$output_file"
+          done
+
+      - name: Commit and Push Changes
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add adblock_reject_shadowrocket_domainset.*
+          git commit -m "Processed and generated Shadowrocket domainset files"
+          git push --force "https://${TOKEN}@github.com/${{ github.repository }}.git" HEAD:main
