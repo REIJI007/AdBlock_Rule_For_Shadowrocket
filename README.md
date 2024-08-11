@@ -44,9 +44,11 @@
 <br>
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.yaml*
 <br>
+<br>
 *5、可直接下载并复制到[rule]字段下的Matcher Ruleset规则条目列表 adblock_reject_shadowrocket_rule.txt* 
 <br>
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_rule.txt*
+<br>
 <br>
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_rule.txt*
 <br>
