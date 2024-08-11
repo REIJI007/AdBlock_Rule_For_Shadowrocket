@@ -58,7 +58,34 @@ jobs:
         run: |
           workflow_id="Run_AdBlock_Rule_Generator_Shadowrocket_Yaml.yml"
           ref="main"
-          # 触发和验证工作流的代码（与上面相同）
+          # 触发工作流
+          response=$(curl -X POST -H "Authorization: token $TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Shadowrocket/actions/workflows/$workflow_id/dispatches" \
+            -d "{\"ref\":\"$ref\"}")
+          echo "Triggered workflow $workflow_id: $response"
+
+          # 验证工作流成功触发和完成
+          while : ; do
+            status=$(curl -s -H "Authorization: token $TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Shadowrocket/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
+              | jq -r '.workflow_runs[0].conclusion')
+
+            if [[ "$status" == "success" ]]; then
+              echo "Workflow $workflow_id completed successfully."
+              break
+            elif [[ "$status" == "failure" ]]; then
+              echo "Workflow $workflow_id failed."
+              exit 1
+            else
+              echo "Waiting for workflow $workflow_id to complete..."
+              sleep 30
+            fi
+          done
+
+          # 等待90秒
+          sleep 90
 
   trigger_adblock_rule_generator_shadowrocket_list:
     needs: trigger_adblock_rule_generator_shadowrocket_yaml
@@ -72,7 +99,34 @@ jobs:
         run: |
           workflow_id="Run_AdBlock_Rule_Generator_Shadowrocket_List.yml"
           ref="main"
-          # 触发和验证工作流的代码（与上面相同）
+          # 触发工作流
+          response=$(curl -X POST -H "Authorization: token $TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Shadowrocket/actions/workflows/$workflow_id/dispatches" \
+            -d "{\"ref\":\"$ref\"}")
+          echo "Triggered workflow $workflow_id: $response"
+
+          # 验证工作流成功触发和完成
+          while : ; do
+            status=$(curl -s -H "Authorization: token $TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Shadowrocket/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
+              | jq -r '.workflow_runs[0].conclusion')
+
+            if [[ "$status" == "success" ]]; then
+              echo "Workflow $workflow_id completed successfully."
+              break
+            elif [[ "$status" == "failure" ]]; then
+              echo "Workflow $workflow_id failed."
+              exit 1
+            else
+              echo "Waiting for workflow $workflow_id to complete..."
+              sleep 30
+            fi
+          done
+
+          # 等待90秒
+          sleep 90
 
   trigger_adblock_rule_generator_shadowrock_txt:
     needs: trigger_adblock_rule_generator_shadowrocket_list
@@ -86,7 +140,34 @@ jobs:
         run: |
           workflow_id="Run_AdBlock_Rule_Generator_Shadowrock_Txt.yml"
           ref="main"
-          # 触发和验证工作流的代码（与上面相同）
+          # 触发工作流
+          response=$(curl -X POST -H "Authorization: token $TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Shadowrocket/actions/workflows/$workflow_id/dispatches" \
+            -d "{\"ref\":\"$ref\"}")
+          echo "Triggered workflow $workflow_id: $response"
+
+          # 验证工作流成功触发和完成
+          while : ; do
+            status=$(curl -s -H "Authorization: token $TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Shadowrocket/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
+              | jq -r '.workflow_runs[0].conclusion')
+
+            if [[ "$status" == "success" ]]; then
+              echo "Workflow $workflow_id completed successfully."
+              break
+            elif [[ "$status" == "failure" ]]; then
+              echo "Workflow $workflow_id failed."
+              exit 1
+            else
+              echo "Waiting for workflow $workflow_id to complete..."
+              sleep 30
+            fi
+          done
+
+          # 等待90秒
+          sleep 90
 
   trigger_adblock_rule_generator_txt_rule:
     needs: trigger_adblock_rule_generator_shadowrock_txt
@@ -100,7 +181,34 @@ jobs:
         run: |
           workflow_id="Run_AdBlock_Rule_Generator_TXT_RULE.yml"
           ref="main"
-          # 触发和验证工作流的代码（与上面相同）
+          # 触发工作流
+          response=$(curl -X POST -H "Authorization: token $TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Shadowrocket/actions/workflows/$workflow_id/dispatches" \
+            -d "{\"ref\":\"$ref\"}")
+          echo "Triggered workflow $workflow_id: $response"
+
+          # 验证工作流成功触发和完成
+          while : ; do
+            status=$(curl -s -H "Authorization: token $TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Shadowrocket/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
+              | jq -r '.workflow_runs[0].conclusion')
+
+            if [[ "$status" == "success" ]]; then
+              echo "Workflow $workflow_id completed successfully."
+              break
+            elif [[ "$status" == "failure" ]]; then
+              echo "Workflow $workflow_id failed."
+              exit 1
+            else
+              echo "Waiting for workflow $workflow_id to complete..."
+              sleep 30
+            fi
+          done
+
+          # 等待90秒
+          sleep 90
 
   release_adblock_files:
     needs: trigger_adblock_rule_generator_txt_rule
@@ -114,6 +222,28 @@ jobs:
         run: |
           workflow_id="Release_ADblock_Files.yml"
           ref="main"
-          # 触发和验证工作流的代码（与上面相同）
+          # 触发工作流
+          response=$(curl -X POST -H "Authorization: token $TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Shadowrocket/actions/workflows/$workflow_id/dispatches" \
+            -d "{\"ref\":\"$ref\"}")
+          echo "Triggered workflow $workflow_id: $response"
 
+          # 验证工作流成功触发和完成
+          while : ; do
+            status=$(curl -s -H "Authorization: token $TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Shadowrocket/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
+              | jq -r '.workflow_runs[0].conclusion')
 
+            if [[ "$status" == "success" ]]; then
+              echo "Workflow $workflow_id completed successfully."
+              break
+            elif [[ "$status" == "failure" ]]; then
+              echo "Workflow $workflow_id failed."
+              exit 1
+            else
+              echo "Waiting for workflow $workflow_id to complete..."
+              sleep 30
+            fi
+          done
