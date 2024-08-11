@@ -1,4 +1,4 @@
-name: Process Shadowrocket Ruleset Files
+name: Process Ruleset Files
 
 on:
   push:
@@ -21,8 +21,8 @@ jobs:
           for file in "${files[@]}"; do
             # 生成目标文件名 (将 ruleset 替换为 domainset)
             output_file=$(echo "$file" | sed 's/ruleset/domainset/')
-            # 处理文件：忽略注释和 "payload:"，删除 "DOMAIN," 并左对齐
-            grep -vE '^#|^payload:' "$file" | sed 's/DOMAIN,//g' > "$output_file"
+            # 处理文件：保留注释和 "payload:"，只删除 "DOMAIN," 并左对齐
+            sed 's/DOMAIN,//g' "$file" > "$output_file"
           done
 
       - name: Commit and Push Changes
