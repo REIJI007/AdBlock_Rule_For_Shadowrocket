@@ -1,10 +1,13 @@
 name: Process Ruleset Files
 
+# 触发条件
 on:
   push:
     branches:
       - main
   workflow_dispatch:
+  schedule:
+    - cron: '*/20 * * * *'  # 每20分钟执行一次
 
 jobs:
   process_files:
