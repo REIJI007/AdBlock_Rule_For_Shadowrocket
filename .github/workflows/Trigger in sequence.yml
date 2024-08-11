@@ -6,6 +6,7 @@ on:
     - cron: '*/20 * * * *'  # 每20分钟触发一次
 
 jobs:
+  # 触发并验证处理 shadowrocket_conf 文件的工作流
   trigger_adblock_rule_generator_shadowrocket_conf:
     runs-on: ubuntu-latest
     steps:
@@ -46,6 +47,7 @@ jobs:
           # 等待90秒
           sleep 90
 
+  # 触发并验证处理 shadowrocket_yaml 文件的工作流
   trigger_adblock_rule_generator_shadowrocket_yaml:
     needs: trigger_adblock_rule_generator_shadowrocket_conf
     runs-on: ubuntu-latest
@@ -87,6 +89,7 @@ jobs:
           # 等待90秒
           sleep 90
 
+  # 触发并验证处理 shadowrocket_list 文件的工作流
   trigger_adblock_rule_generator_shadowrocket_list:
     needs: trigger_adblock_rule_generator_shadowrocket_yaml
     runs-on: ubuntu-latest
@@ -128,6 +131,7 @@ jobs:
           # 等待90秒
           sleep 90
 
+  # 触发并验证处理 shadowrock_txt 文件的工作流
   trigger_adblock_rule_generator_shadowrock_txt:
     needs: trigger_adblock_rule_generator_shadowrocket_list
     runs-on: ubuntu-latest
@@ -169,17 +173,18 @@ jobs:
           # 等待90秒
           sleep 90
 
-  trigger_adblock_rule_generator_txt_rule:
+  # 处理并转换规则文件到 domainset 格式的工作流
+  convert_the_ruleset_files_into_domainset_files:
     needs: trigger_adblock_rule_generator_shadowrock_txt
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Trigger and verify Run_AdBlock_Rule_Generator_TXT_RULE
+      - name: Trigger and verify Convert_the_Ruleset_files_into_Domainset_files
         env:
           TOKEN: ${{ secrets.TOKEN }}
         run: |
-          workflow_id="Run_AdBlock_Rule_Generator_TXT_RULE.yml"
+          workflow_id="Convert_the_Ruleset_files_into_Domainset_files.yml"
           ref="main"
           # 触发工作流
           response=$(curl -X POST -H "Authorization: token $TOKEN" \
@@ -210,8 +215,9 @@ jobs:
           # 等待90秒
           sleep 90
 
+  # 触发并验证发布文件的工作流
   release_adblock_files:
-    needs: trigger_adblock_rule_generator_txt_rule
+    needs: convert_the_ruleset_files_into_domainset_files
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
