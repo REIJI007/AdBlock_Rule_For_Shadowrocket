@@ -31,7 +31,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add -f adblock_reject_shadowrocket_ruleset.conf adblock_reject_shadowrocket_ruleset.list adblock_reject_shadowrocket_ruleset.txt adblock_reject_shadowrocket_ruleset.yaml adblock_reject_shadowrocket_rule.txt timestamp.txt
+          git add -f adblock_reject_shadowrocket_ruleset.conf adblock_reject_shadowrocket_ruleset.list adblock_reject_shadowrocket_ruleset.txt adblock_reject_shadowrocket_ruleset.yaml adblock_reject_shadowrocket_rule.txt adblock_reject_shadowrocket_domainset.conf adblock_reject_shadowrocket_domainset.list adblock_reject_shadowrocket_domainset.txt adblock_reject_shadowrocket_domainset.yaml timestamp.txt
           git commit -m "Forced update of adblock files and timestamp"
           git push origin main --force  # 强制推送到main分支
         env:
@@ -49,7 +49,7 @@ jobs:
           body: "Periodic release of adblock files."  # 发布说明
           draft: false  # 创建正式发布，而非草稿
 
-      # 步骤6：上传 adblock_reject_shadowrocket_ruleset.conf
+      # 上传所有文件
       - name: Upload adblock_reject_shadowrocket_ruleset.conf
         uses: actions/upload-release-asset@v1
         env:
@@ -60,7 +60,6 @@ jobs:
           asset_name: adblock_reject_shadowrocket_ruleset.conf
           asset_content_type: text/plain
 
-      # 步骤7：上传 adblock_reject_shadowrocket_ruleset.list
       - name: Upload adblock_reject_shadowrocket_ruleset.list
         uses: actions/upload-release-asset@v1
         env:
@@ -71,7 +70,6 @@ jobs:
           asset_name: adblock_reject_shadowrocket_ruleset.list
           asset_content_type: text/plain
 
-      # 步骤8：上传 adblock_reject_shadowrocket_ruleset.txt
       - name: Upload adblock_reject_shadowrocket_ruleset.txt
         uses: actions/upload-release-asset@v1
         env:
@@ -82,7 +80,6 @@ jobs:
           asset_name: adblock_reject_shadowrocket_ruleset.txt
           asset_content_type: text/plain
 
-      # 步骤9：上传 adblock_reject_shadowrocket_ruleset.yaml
       - name: Upload adblock_reject_shadowrocket_ruleset.yaml
         uses: actions/upload-release-asset@v1
         env:
@@ -93,7 +90,6 @@ jobs:
           asset_name: adblock_reject_shadowrocket_ruleset.yaml
           asset_content_type: application/x-yaml
 
-      # 步骤10：上传 adblock_reject_shadowrocket_rule.txt
       - name: Upload adblock_reject_shadowrocket_rule.txt
         uses: actions/upload-release-asset@v1
         env:
@@ -103,3 +99,43 @@ jobs:
           asset_path: ./adblock_reject_shadowrocket_rule.txt
           asset_name: adblock_reject_shadowrocket_rule.txt
           asset_content_type: text/plain
+
+      - name: Upload adblock_reject_shadowrocket_domainset.conf
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./adblock_reject_shadowrocket_domainset.conf
+          asset_name: adblock_reject_shadowrocket_domainset.conf
+          asset_content_type: text/plain
+
+      - name: Upload adblock_reject_shadowrocket_domainset.list
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./adblock_reject_shadowrocket_domainset.list
+          asset_name: adblock_reject_shadowrocket_domainset.list
+          asset_content_type: text/plain
+
+      - name: Upload adblock_reject_shadowrocket_domainset.txt
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./adblock_reject_shadowrocket_domainset.txt
+          asset_name: adblock_reject_shadowrocket_domainset.txt
+          asset_content_type: text/plain
+
+      - name: Upload adblock_reject_shadowrocket_domainset.yaml
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./adblock_reject_shadowrocket_domainset.yaml
+          asset_name: adblock_reject_shadowrocket_domainset.yaml
+          asset_content_type: application/x-yaml
