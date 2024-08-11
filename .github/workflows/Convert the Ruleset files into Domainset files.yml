@@ -1,4 +1,4 @@
-name: Convert the Ruleset files into Domainset files
+name: Process Shadowrocket Ruleset Files
 
 # 触发条件
 on:
@@ -24,8 +24,11 @@ jobs:
           for file in "${files[@]}"; do
             # 生成目标文件名 (将 ruleset 替换为 domainset)
             output_file=$(echo "$file" | sed 's/ruleset/domainset/')
-            # 处理文件：保留注释和 "payload:"，只删除 "DOMAIN," 并左对齐
-            sed 's/DOMAIN,//g' "$file" > "$output_file"
+            # 处理文件：
+            # 1. 保留注释和 "payload:"，只删除 "DOMAIN,"
+            # 2. 将注释中的 "RULE-SET" 替换为 "DOMAIN-SET"
+            # 3. 将注释中的 "RULESET" 替换为 "DOMAIN"
+            sed -E 's/DOMAIN,//g; s/RULE-SET/DOMAIN-SET/g; s/RULESET/DOMAIN/g' "$file" > "$output_file"
           done
 
       - name: Commit and Push Changes
