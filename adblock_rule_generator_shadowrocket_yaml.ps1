@@ -50,6 +50,7 @@ $webClient = New-Object System.Net.WebClient
 $webClient.Encoding = [System.Text.Encoding]::UTF8
 $webClient.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
 
+# 遍历所有URL，处理每个链接内容
 foreach ($url in $urlList) {
     Write-Host "正在处理: $url"
     Add-Content -Path $logFilePath -Value "正在处理: $url"
@@ -57,6 +58,7 @@ foreach ($url in $urlList) {
         $content = $webClient.DownloadString($url)
         $lines = $content -split "`n"
 
+        # 过滤出有效的域名规则
         foreach ($line in $lines) {
             if ($line -match '^\|\|([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\^$' -or $line -match '^(0\.0\.0\.0|127\.0\.0\.1)\s+([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$' -or $line -match '^address=/([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/$') {
                 $domain = $Matches[1]
@@ -82,6 +84,15 @@ $ruleCount = $uniqueRules.Count
 
 # 创建 YAML 格式的字符串
 $yamlContent = @"
+# Title: AdBlock_Rule_For_Shadowrocket_RULESET
+# Description: 适用于Shadowrocket的域名拦截yaml格式RULE-SET，每20分钟更新一次，确保即时同步上游减少误杀
+# Homepage: https://github.com/REIJI007/AdBlock_Rule_For_Shadowrocket
+# LICENSE1：https://github.com/REIJI007/AdBlock_Rule_For_Shadowrocket/blob/main/LICENSE-GPL3.0
+# LICENSE2：https://github.com/REIJI007/AdBlock_Rule_For_Shadowrocket/blob/main/LICENSE-CC%20BY-NC-SA%204.0
+
+# Generated AdBlock rules
+# Total entries: $ruleCount
+
 payload:
 $($formattedRules -join "`n")
 "@
