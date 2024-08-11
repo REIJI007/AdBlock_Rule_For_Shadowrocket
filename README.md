@@ -19,41 +19,69 @@
 
 <hr>
 
-*1、适用于Shadowrocket的外部远程域名CONF格式拦截RULE-SET规则集 adblock_reject_shadowrocket_ruleset.conf* 
+*1、可直接下载并复制到[rule]字段下的Matcher Ruleset规则条目列表 adblock_reject_shadowrocket_rule.txt* 
+<br>
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_rule.txt*
+<br>
+*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_rule.txt*
+<br>
+<br>
+*2、适用于Shadowrocket的外部远程域名CONF格式拦截RULE-SET规则集 adblock_reject_shadowrocket_ruleset.conf* 
 <br>
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_ruleset.conf*
 <br>
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.conf*
 <br>
 <br>
-*2、适用于Shadowrocket的外部远程域名LIST格式拦截RULE-SET规则集 adblock_reject_shadowrocket_ruleset.list* 
+*3、适用于Shadowrocket的外部远程域名LIST格式拦截RULE-SET规则集 adblock_reject_shadowrocket_ruleset.list* 
 <br>
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_ruleset.list*
 <br>
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.list*
 <br>
 <br>
-*3、适用于Shadowrocket的外部远程域名TXT格式拦截RULE-SET规则集 adblock_reject_shadowrocket_ruleset.txt* 
+*4、适用于Shadowrocket的外部远程域名TXT格式拦截RULE-SET规则集 adblock_reject_shadowrocket_ruleset.txt* 
 <br>
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_ruleset.txt*
 <br>
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.txt*
 <br>
 <br>
-*4、适用于Shadowrocket的外部远程域名YAML格式拦截RULE-SET规则集 adblock_reject_shadowrocket_ruleset.yaml* 
+*5、适用于Shadowrocket的外部远程域名YAML格式拦截RULE-SET规则集 adblock_reject_shadowrocket_ruleset.yaml* 
 <br>
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_ruleset.yaml*
 <br>
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.yaml*
 <br>
 <br>
-*5、可直接下载并复制到[rule]字段下的Matcher Ruleset规则条目列表 adblock_reject_shadowrocket_rule.txt* 
+*6、适用于Shadowrocket的外部远程域名CONF格式拦截DOMAIN-SET规则集 adblock_reject_shadowrocket_domainset.conf* 
 <br>
-*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_rule.txt*
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_domainset.conf*
+<br>
+*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_domainset.conf*
 <br>
 <br>
-*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_rule.txt*
-
+*7、适用于Shadowrocket的外部远程域名LIST格式拦截DOMAIN-SET规则集 adblock_reject_shadowrocket_ruleset.list* 
+<br>
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_domainset.list*
+<br>
+*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_domainset.list*
+<br>
+<br>
+*8、适用于Shadowrocket的外部远程域名TXT格式拦截DOMAIN-SET规则集 adblock_reject_shadowrocket_ruleset.txt* 
+<br>
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_domainset.txt*
+<br>
+*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_domainset.txt*
+<br>
+<br>
+*9、适用于Shadowrocket的外部远程域名YAML格式拦截DOMAIN-SET规则集 adblock_reject_shadowrocket_ruleset.yaml* 
+<br>
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_domainset.yaml*
+<br>
+*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_domainset.yaml*
+<br>
+<br>
 <hr>
 
 
