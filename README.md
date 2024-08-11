@@ -99,31 +99,66 @@ RULE-SET,C:\Users\YourUsername\Documents\file.yaml,REJECT  #你的外部本地�
   *使用方式一：下载releases中的adblock_reject_shadowrocket_rule.txt文件，里面的内容可直接粘贴到shadowrocket的配置中的[rules]字段下作为拦截规则（需要手动下载更新）*
 
   *使用方式二：将下面对应格式的配置文件中[rule]字段内容添加到你的配置文件充当远程规则集，需要特别注意配置文件的缩进和对齐（同步本仓库的云端部署的远程规则集配置)*
+
 <hr>
 
-
-
-  
-```conf
-#适用于Shadowrocket的conf格式RULE-SET
-[Rule]
-RULE-SET,https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.conf,REJECT
-```
-```conf
-#适用于Shadowrocket的list格式RULE-SET
-[Rule]
-RULE-SET,https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.list,REJECT
-```
 ```conf
 #适用于Shadowrocket的txt格式RULE-SET
 [Rule]
-RULE-SET,https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.txt,REJECT
+RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_ruleset.txt,REJECT
 ```
+```conf
+#适用于Shadowrocket的txt格式DOMAIN-SET
+[Rule]
+RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_domainset.txt,REJECT
+```
+
+
+
+<hr>
+
+```conf
+#适用于Shadowrocket的conf格式RULE-SET
+[Rule]
+RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_ruleset.conf,REJECT
+```
+```conf
+#适用于Shadowrocket的conf格式DOMAIN-SET
+[Rule]
+RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_domainset.conf,REJECT
+```
+
+
+
+<hr>
+
 ```conf
 #适用于Shadowrocket的yaml格式RULE-SET
 [Rule]
-RULE-SET,https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.yaml,REJECT
+RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_ruleset.yaml,REJECT
 ```
+```conf
+#适用于Shadowrocket的yaml格式DOMAIN-SET
+[Rule]
+RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_domainset.yaml,REJECT
+```
+
+
+
+<hr>
+
+```conf
+#适用于Shadowrocket的list格式RULE-SET
+[Rule]
+RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_ruleset.list,REJECT
+```
+```conf
+#适用于Shadowrocket的list格式DOMAIN-SET
+[Rule]
+RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_domainset.list,REJECT
+```
+
+<hr>
 
 
 
