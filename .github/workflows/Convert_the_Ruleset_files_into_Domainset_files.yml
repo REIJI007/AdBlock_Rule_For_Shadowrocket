@@ -1,4 +1,4 @@
-name: Convert the Ruleset files into Domainset files
+name: Convert_the_Ruleset_files_into_Domainset_files
 
 # 触发条件
 on:
