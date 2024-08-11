@@ -44,7 +44,12 @@
 <br>
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.yaml*
 <br>
-
+*5、可直接下载并复制到[rule]字段下的Matcher Ruleset规则条目列表 adblock_reject_shadowrocket_rule.txt* 
+<br>
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_rule.txt*
+<br>
+*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_rule.txt*
+<br>
 
 
 **二、理论上任何代理拦截域名且符合广告过滤器过滤语法的列表订阅URL都可加入此powershell脚本处理，请自行酌情添加过滤器订阅URL至powershell脚本中进行处理，你可将该脚本代码复制到本地文本编辑器制作成.ps1后缀的文件运行在powershell上，注意修改生成的yaml文件路径，最后在shadowrocket的配置中实现调用本地生成的规则集文件，且shadowrocket的【rule】配置字段写成类似于如下例子**
