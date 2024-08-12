@@ -44,7 +44,7 @@
 <hr>
 
 ```conf
-# 适用于Shadowrocket的本地广告域名拦截规则
+# 适用于Shadowrocket的外部本地广告域名拦截规则
 [Rule]
 # 广告域名拦截规则文件路径
 RULE-SET,/path/to/your/file.conf, REJECT
@@ -64,6 +64,7 @@ RULE-SET,/path/to/your/file.conf, REJECT
 <hr>
 
 ```conf
+# 适用于Shadowrocket的外部远程广告域名拦截规则
 [Remote Rules]
 https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_rule.conf, adblock, interval=86400, policy=REJECT, auto=true, enabled=true
 ```
