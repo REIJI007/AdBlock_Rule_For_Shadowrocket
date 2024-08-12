@@ -19,15 +19,7 @@
 
 <hr>
 
-*1、可直接下载并复制到[rule]字段下的Matcher Ruleset规则条目列表 adblock_reject_shadowrocket_rule.txt* 
-<br>
-*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_rule.txt*
-<br>
-<br>
-*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_rule.txt*
-<br>
-<br>
-*2、适用于Shadowrocket的外部远程域名CONF格式拦截RULE-SET规则集 adblock_reject_shadowrocket_ruleset.conf* 
+*1、适用于Shadowrocket的外部远程域名CONF格式拦截RULE-SET规则集 adblock_reject_shadowrocket_ruleset.conf* 
 <br>
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_ruleset.conf*
 <br>
@@ -35,7 +27,7 @@
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.conf*
 <br>
 <br>
-*3、适用于Shadowrocket的外部远程域名CONF格式拦截DOMAIN-SET规则集 adblock_reject_shadowrocket_domainset.conf* 
+*2、适用于Shadowrocket的外部远程域名CONF格式拦截DOMAIN-SET规则集 adblock_reject_shadowrocket_domainset.conf* 
 <br>
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_domainset.conf*
 <br>
@@ -63,8 +55,6 @@ RULE-SET,local:///path/to/rules.conf,REJECT  #你的外部本地拦截域名conf
 [Rule]
 DOMAIN-SET,local:///path/to/rules.conf,REJECT  #你的外部本地拦截域名conf格式规则集文件保存路径
 ```
-
-
 <hr>
 
 
@@ -74,7 +64,7 @@ DOMAIN-SET,local:///path/to/rules.conf,REJECT  #你的外部本地拦截域名co
 
 **四、关于本仓库使用方式：**
 
-  *使用方式一：下载releases中的adblock_reject_shadowrocket_rule.txt文件，里面的内容可直接粘贴到shadowrocket的配置中的[rules]字段下作为拦截规则（需要手动下载更新）*
+  *使用方式一：下载releases中的文件，修改shadowrocket的配置中的[rules]字段引用本地文件作为拦截规则集（需要手动下载更新）*
 
   *使用方式二：将下面对应格式的配置文件中[rule]字段内容添加到你的配置文件充当远程规则集，需要特别注意配置文件的缩进和对齐（同步本仓库的云端部署的远程规则集配置)*
 
