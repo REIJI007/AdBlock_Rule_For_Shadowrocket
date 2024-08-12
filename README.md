@@ -43,7 +43,7 @@
 <br>
 *简而言之就是可以让你DIY出希望得到的拦截域名Matcher Ruleset列表，缺点是此做法只适合本地定制使用，当然你也可以像本仓库一样部署到GitHub上面，见仁见智*
 <hr>
-
+<br>
 
 
 ```conf
@@ -54,7 +54,7 @@ RULE-SET,/path/to/your/file.conf, REJECT
 ```
 
 
-
+<br>
 <hr>
 
 
