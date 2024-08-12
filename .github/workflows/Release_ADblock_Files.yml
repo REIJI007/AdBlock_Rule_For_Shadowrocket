@@ -31,7 +31,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add -f adblock_reject_shadowrocket_ruleset.conf adblock_reject_shadowrocket_domainset.conf timestamp.txt
+          git add -f adblock_reject_shadowrocket_ruleset.list adblock_reject_shadowrocket_domainset.list timestamp.txt
           git commit -m "Forced update of adblock files and timestamp"
           git push origin main --force  # 强制推送到main分支
         env:
@@ -42,7 +42,7 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}  # 使用TOKEN进行身份验证
+          TOKEN: ${{ secrets.TOKEN }}  # 使用TOKEN进行身份验证
         with:
           tag_name: release-${{ env.time }}  # 使用时间戳作为标签名
           release_name: Release ${{ env.time }}  # 使用时间戳作为发布名称
@@ -53,7 +53,7 @@ jobs:
       - name: Upload adblock_reject_shadowrocket_ruleset.list
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          TOKEN: ${{ secrets.TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}  # 使用创建发布时生成的URL
           asset_path: ./adblock_reject_shadowrocket_ruleset.list
@@ -64,7 +64,7 @@ jobs:
       - name: Upload adblock_reject_shadowrocket_domainset.list
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          TOKEN: ${{ secrets.TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./adblock_reject_shadowrocket_domainset.list
