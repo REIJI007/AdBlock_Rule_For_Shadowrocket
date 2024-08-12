@@ -46,15 +46,12 @@
 
 
 ```conf
-#适用于Shadowrocket的外部本地拦截域名list格式RULE-SET规则集
+# 适用于Shadowrocket的本地广告域名拦截规则
 [Rule]
-RULE-SET,local:///path/to/rules.list,REJECT  #你的外部本地拦截域名list格式规则集文件保存路径
+# 广告域名拦截规则文件路径
+RULE-SET,/path/to/your/file.conf, REJECT
 ```
-```conf
-#适用于Shadowrocket的外部本地拦截域名list格式DOMAIN-SET规则集
-[Rule]
-DOMAIN-SET,local:///path/to/rules.list,REJECT  #你的外部本地拦截域名list格式规则集文件保存路径
-```
+
 <hr>
 
 
@@ -69,21 +66,10 @@ DOMAIN-SET,local:///path/to/rules.list,REJECT  #你的外部本地拦截域名li
   *使用方式二：将下面对应格式的配置文件中[rule]字段内容添加到你的配置文件充当远程规则集，需要特别注意配置文件的缩进和对齐（同步本仓库的云端部署的远程规则集配置)*
 
 <hr>
-
-
-
 ```conf
-#适用于Shadowrocket的list格式RULE-SET
-[Rule]
-RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_ruleset.list,REJECT
+[Remote Rules]
+https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_rule.conf, adblock, interval=86400, policy=REJECT, auto=true, enabled=true
 ```
-```conf
-#适用于Shadowrocket的list格式DOMAIN-SET
-[Rule]
-DOMAIN-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_domainset.list,REJECT
-```
-
-
 <hr>
 
 **五、关于本仓库的使用效果为什么没有普通广告过滤器效果好的疑问解答：**
