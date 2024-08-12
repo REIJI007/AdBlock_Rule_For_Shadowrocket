@@ -42,7 +42,7 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          TOKEN: ${{ secrets.TOKEN }}  # 使用TOKEN进行身份验证
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用GitHub默认token进行身份验证
         with:
           tag_name: release-${{ env.time }}  # 使用时间戳作为标签名
           release_name: Release ${{ env.time }}  # 使用时间戳作为发布名称
@@ -53,7 +53,7 @@ jobs:
       - name: Upload adblock_reject_shadowrocket_ruleset.list
         uses: actions/upload-release-asset@v1
         env:
-          TOKEN: ${{ secrets.TOKEN }}
+          TOKEN: ${{ secrets.TOKEN }}  # 使用 TOKEN 进行身份验证
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}  # 使用创建发布时生成的URL
           asset_path: ./adblock_reject_shadowrocket_ruleset.list
@@ -64,7 +64,7 @@ jobs:
       - name: Upload adblock_reject_shadowrocket_domainset.list
         uses: actions/upload-release-asset@v1
         env:
-          TOKEN: ${{ secrets.TOKEN }}
+          TOKEN: ${{ secrets.TOKEN }}  # 使用 TOKEN 进行身份验证
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./adblock_reject_shadowrocket_domainset.list
