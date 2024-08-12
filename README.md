@@ -23,6 +23,7 @@
 <br>
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_rule.txt*
 <br>
+<br>
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_rule.txt*
 <br>
 <br>
