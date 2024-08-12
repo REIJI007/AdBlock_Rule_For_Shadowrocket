@@ -54,9 +54,14 @@
 
 
 ```conf
-#适用于Shadowrocket的外部本地拦截域名conf格式规则集
+#适用于Shadowrocket的外部本地拦截域名conf格式RULE-SET规则集
 [Rule]
 RULE-SET,local:///path/to/rules.conf,REJECT  #你的外部本地拦截域名conf格式规则集文件保存路径
+```
+```conf
+#适用于Shadowrocket的外部本地拦截域名conf格式DOMAIN-SET规则集
+[Rule]
+DOMAIN-SET,local:///path/to/rules.conf,REJECT  #你的外部本地拦截域名conf格式规则集文件保存路径
 ```
 
 
@@ -85,7 +90,7 @@ RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocke
 ```conf
 #适用于Shadowrocket的conf格式DOMAIN-SET
 [Rule]
-RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_domainset.conf,REJECT
+DOMAIN-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_domainset.conf,REJECT
 ```
 
 
