@@ -1,5 +1,5 @@
-# Title: AdBlock_Rule_For_Shadowrocket_RULESET
-# Description: 适用于Shadowrocket的域名拦截list格式RULE-SET，每20分钟更新一次，确保即时同步上游减少误杀
+# Title: AdBlock_Rule_For_Shadowrocket
+# Description: 适用于Shadowrocket的域名拦截Matcher Ruleset列表，每20分钟更新一次，确保即时同步上游减少误杀
 # Homepage: https://github.com/REIJI007/AdBlock_Rule_For_Shadowrocket
 
 # 定义广告过滤器URL列表
@@ -75,15 +75,15 @@ foreach ($url in $urlList) {
 }
 
 # 对规则进行排序并添加DOMAIN,前缀
-$formattedRules = $uniqueRules | Sort-Object | ForEach-Object {"DOMAIN,$_"}
+$formattedRules = $uniqueRules | Sort-Object | ForEach-Object {"DOMAIN,$_,REJECT"}
 
 # 统计生成的规则条目数量
 $ruleCount = $uniqueRules.Count
 
 # 创建文本格式的字符串
 $textContent = @"
-# Title: AdBlock_Rule_For_Shadowrocket_RULESET
-# Description: 适用于Shadowrocket的域名拦截list格式RULE-SET，每20分钟更新一次，确保即时同步上游减少误杀
+# Title: AdBlock_Rule_For_Shadowrocket
+# Description: 适用于Shadowrocket的域名拦截Matcher Ruleset列表，每20分钟更新一次，确保即时同步上游减少误杀
 # Homepage: https://github.com/REIJI007/AdBlock_Rule_For_Shadowrocket
 # LICENSE1：https://github.com/REIJI007/AdBlock_Rule_For_Shadowrocket/blob/main/LICENSE-GPL3.0
 # LICENSE2：https://github.com/REIJI007/AdBlock_Rule_For_Shadowrocket/blob/main/LICENSE-CC%20BY-NC-SA%204.0
@@ -95,7 +95,7 @@ $($formattedRules -join "`n")
 "@
 
 # 定义输出文件路径
-$outputPath = "$PSScriptRoot/adblock_reject_shadowrocket_ruleset.list"
+$outputPath = "$PSScriptRoot/adblock_reject_shadowrocket_rule.conf"
 $textContent | Out-File -FilePath $outputPath -Encoding utf8
 
 # 输出生成的有效规则总数
