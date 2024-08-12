@@ -34,7 +34,6 @@
 <br>
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_domainset.list*
 <br>
-<br>
 <hr>
 
 
