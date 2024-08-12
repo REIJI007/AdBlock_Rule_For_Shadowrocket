@@ -60,35 +60,6 @@ jobs:
           asset_name: adblock_reject_shadowrocket_ruleset.conf
           asset_content_type: text/plain
 
-      - name: Upload adblock_reject_shadowrocket_ruleset.list
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./adblock_reject_shadowrocket_ruleset.list
-          asset_name: adblock_reject_shadowrocket_ruleset.list
-          asset_content_type: text/plain
-
-      - name: Upload adblock_reject_shadowrocket_ruleset.txt
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./adblock_reject_shadowrocket_ruleset.txt
-          asset_name: adblock_reject_shadowrocket_ruleset.txt
-          asset_content_type: text/plain
-
-      - name: Upload adblock_reject_shadowrocket_ruleset.yaml
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./adblock_reject_shadowrocket_ruleset.yaml
-          asset_name: adblock_reject_shadowrocket_ruleset.yaml
-          asset_content_type: application/x-yaml
 
       - name: Upload adblock_reject_shadowrocket_rule.txt
         uses: actions/upload-release-asset@v1
@@ -100,6 +71,8 @@ jobs:
           asset_name: adblock_reject_shadowrocket_rule.txt
           asset_content_type: text/plain
 
+
+
       - name: Upload adblock_reject_shadowrocket_domainset.conf
         uses: actions/upload-release-asset@v1
         env:
@@ -110,32 +83,7 @@ jobs:
           asset_name: adblock_reject_shadowrocket_domainset.conf
           asset_content_type: text/plain
 
-      - name: Upload adblock_reject_shadowrocket_domainset.list
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./adblock_reject_shadowrocket_domainset.list
-          asset_name: adblock_reject_shadowrocket_domainset.list
-          asset_content_type: text/plain
 
-      - name: Upload adblock_reject_shadowrocket_domainset.txt
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./adblock_reject_shadowrocket_domainset.txt
-          asset_name: adblock_reject_shadowrocket_domainset.txt
-          asset_content_type: text/plain
 
-      - name: Upload adblock_reject_shadowrocket_domainset.yaml
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./adblock_reject_shadowrocket_domainset.yaml
-          asset_name: adblock_reject_shadowrocket_domainset.yaml
-          asset_content_type: application/x-yaml
+  
+
