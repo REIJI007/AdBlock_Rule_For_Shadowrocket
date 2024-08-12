@@ -113,7 +113,7 @@ RULE-SET,local:///path/to/rules.txt,REJECT  #你的外部本地拦截域名txt�
 ```conf
 #适用于Shadowrocket的外部本地拦截域名yaml格式规则集
 [Rule]
-RULE-SET,local:///path/to/rules.list,REJECT  #你的外部本地拦截域名yaml格式规则集文件保存路径
+RULE-SET,local:///path/to/rules.yaml,REJECT  #你的外部本地拦截域名yaml格式规则集文件保存路径
 ```
 <hr>
 
