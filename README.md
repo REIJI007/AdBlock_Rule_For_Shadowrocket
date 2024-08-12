@@ -15,7 +15,7 @@
     <img src="https://img.shields.io/github/license/REIJI007/AdBlock_Rule_For_Shadowrocket" alt="license" style="margin-right: 10px;">
 </p>
 
-**一、从多个广告过滤器中提取拦截域名条目，删除重复项，并将它们转换为兼容Shadowrocket的列表格式，其中列表的每一项都写成了Matcher Ruleset格式数组，一行仅一条规则。该列表可以用作Shadowrocket的RULE-SET以阻止广告域名， powershell脚本每20分钟自动执行并将生成的文件发布在release中,下面是五个规则集文件地址.**
+**一、从多个广告过滤器中提取拦截域名条目，删除重复项，并将它们转换为兼容Shadowrocket的列表格式，其中列表的每一项都写成了Matcher Ruleset格式数组，一行仅一条规则。该列表可以用作Shadowrocket的RULE-SET以阻止广告域名， powershell脚本每20分钟自动执行并将生成的文件发布在release中,下面是九个规则集文件地址.**
 
 <hr>
 
