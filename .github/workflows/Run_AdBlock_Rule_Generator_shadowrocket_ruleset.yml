@@ -31,6 +31,18 @@ jobs:
     - name: Run adblock_rule_generator_shadowrocket_ruleset.ps1  # 运行 adblock_rule_generator_shadowrocket_ruleset.ps1 脚本
       run: pwsh -File ./adblock_rule_generator_shadowrocket_ruleset.ps1  # 使用 PowerShell 7 运行脚本
 
+    - name: List files in the directory  # 列出当前目录下的文件
+      run: ls -la
+
+    - name: Check adblock_reject_shadowrocket_ruleset.list file existence  # 检查 adblock_reject_shadowrocket_ruleset.list 文件是否存在
+      run: |
+        if [ -f "./adblock_reject_shadowrocket_ruleset.list" ]; then
+          echo "File exists"
+        else
+          echo "File does not exist"
+          exit 1
+        fi
+
     - name: Force Add and Commit Shadowrocket ruleset list file  # 强制添加并提交 Shadowrocket ruleset list 文件
       run: |
         git config --global user.name 'github-actions'  # 配置提交用户名
@@ -40,7 +52,7 @@ jobs:
 
     - name: Retry Push Shadowrocket ruleset list file  # 推送 Shadowrocket ruleset list 文件，失败时重试
       env:
-        TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 密钥进行身份验证
+        TOKEN: ${{ secrets.TOKEN }}  # 使用 GitHub 密钥进行身份验证
       run: |
         for i in {1..5}; do  # 尝试最多5次
           git push --force origin HEAD && exit 0 || (echo "Push failed, retrying in 10 seconds..." && sleep 10)
