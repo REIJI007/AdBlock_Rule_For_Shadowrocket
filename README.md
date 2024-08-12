@@ -45,12 +45,14 @@
 <hr>
 
 
+
 ```conf
 # 适用于Shadowrocket的本地广告域名拦截规则
 [Rule]
 # 广告域名拦截规则文件路径
 RULE-SET,/path/to/your/file.conf, REJECT
 ```
+
 
 <hr>
 
