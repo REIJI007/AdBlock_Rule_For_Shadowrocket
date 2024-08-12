@@ -6,18 +6,18 @@ on:
     - cron: '*/20 * * * *'  # 每20分钟触发一次
 
 jobs:
-  # 触发并验证处理 shadowrocket_ruleset 文件的工作流
-  trigger_adblock_rule_generator_shadowrocket_ruleset:
+  # 触发并验证 Run_AdBlock_Rule_Generator_shadowrocket_rule.yml 工作流
+  trigger_adblock_rule_generator_shadowrocket_rule:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Trigger and verify Run_AdBlock_Rule_Generator_shadowrocket_ruleset
+      - name: Trigger and verify Run_AdBlock_Rule_Generator_shadowrocket_rule.yml
         env:
           TOKEN: ${{ secrets.TOKEN }}
         run: |
-          workflow_id="Run_AdBlock_Rule_Generator_shadowrocket_ruleset.yml"
+          workflow_id="Run_AdBlock_Rule_Generator_shadowrocket_rule.yml"
           ref="main"
           # 触发工作流
           response=$(curl -X POST -H "Authorization: token $TOKEN" \
@@ -45,22 +45,19 @@ jobs:
             fi
           done
 
-          # 等待90秒
-          sleep 90
-
-  # 触发并验证处理 shadowrocket_domainset 文件的工作流
-  trigger_adblock_rule_generator_shadowrocket_domainset:
-    needs: trigger_adblock_rule_generator_shadowrocket_ruleset
+  # 触发并验证 Rename_and_Push_File.yml 工作流
+  trigger_rename_and_push_file:
+    needs: trigger_adblock_rule_generator_shadowrocket_rule
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Trigger and verify Run_AdBlock_Rule_Generator_shadowrocket_domainset
+      - name: Trigger and verify Rename_and_Push_File.yml
         env:
           TOKEN: ${{ secrets.TOKEN }}
         run: |
-          workflow_id="Run_AdBlock_Rule_Generator_shadowrocket_domainset.yml"
+          workflow_id="Rename_and_Push_File.yml"
           ref="main"
           # 触发工作流
           response=$(curl -X POST -H "Authorization: token $TOKEN" \
@@ -88,18 +85,15 @@ jobs:
             fi
           done
 
-          # 等待90秒
-          sleep 90
-
-  # 触发并验证发布文件的工作流
+  # 触发并验证 Release_ADblock_Files.yml 工作流
   release_adblock_files:
-    needs: trigger_adblock_rule_generator_shadowrocket_domainset
+    needs: trigger_rename_and_push_file
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Trigger and verify Release_ADblock_Files
+      - name: Trigger and verify Release_ADblock_Files.yml
         env:
           TOKEN: ${{ secrets.TOKEN }}
         run: |
