@@ -1,5 +1,5 @@
 # 工作流名称
-name: Release_ADblock_Files
+name: Release_ADblock_file
 
 # 触发条件
 on:
@@ -11,7 +11,6 @@ on:
 jobs:
   create-release:
     runs-on: ubuntu-latest  # 在最新版本的Ubuntu上运行
-
     steps:
       # 步骤1：检出代码
       - name: Checkout code
@@ -31,7 +30,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add -f adblock_reject_shadowrocket_ruleset.list adblock_reject_shadowrocket_domainset.list timestamp.txt
+          git add -f adblock_reject_shadowrocket_domainset.list adblock_reject_shadowrocket_ruleset.list timestamp.txt
           git commit -m "Forced update of adblock files and timestamp"
           git push origin main --force  # 强制推送到main分支
         env:
@@ -42,31 +41,31 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用GitHub默认token进行身份验证
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 默认 token 进行身份验证
         with:
           tag_name: release-${{ env.time }}  # 使用时间戳作为标签名
           release_name: Release ${{ env.time }}  # 使用时间戳作为发布名称
           body: "Periodic release of adblock files."  # 发布说明
           draft: false  # 创建正式发布，而非草稿
 
-      # 步骤6：上传 adblock_reject_shadowrocket_ruleset.list 文件
-      - name: Upload adblock_reject_shadowrocket_ruleset.list
-        uses: actions/upload-release-asset@v1
-        env:
-          TOKEN: ${{ secrets.TOKEN }}  # 使用 TOKEN 进行身份验证
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}  # 使用创建发布时生成的URL
-          asset_path: ./adblock_reject_shadowrocket_ruleset.list
-          asset_name: adblock_reject_shadowrocket_ruleset.list
-          asset_content_type: text/plain
-
-      # 步骤7：上传 adblock_reject_shadowrocket_domainset.list 文件
+      # 步骤6：上传 adblock_reject_shadowrocket_domainset.list 文件
       - name: Upload adblock_reject_shadowrocket_domainset.list
         uses: actions/upload-release-asset@v1
         env:
-          TOKEN: ${{ secrets.TOKEN }}  # 使用 TOKEN 进行身份验证
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}  # 使用 TOKEN 进行身份验证
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url: ${{ steps.create_release.outputs.upload_url }}  # 使用创建发布时生成的URL
           asset_path: ./adblock_reject_shadowrocket_domainset.list
           asset_name: adblock_reject_shadowrocket_domainset.list
+          asset_content_type: text/plain
+
+      # 步骤7：上传 adblock_reject_shadowrocket_ruleset.list 文件
+      - name: Upload adblock_reject_shadowrocket_ruleset.list
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}  # 使用 TOKEN 进行身份验证
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./adblock_reject_shadowrocket_ruleset.list
+          asset_name: adblock_reject_shadowrocket_ruleset.list
           asset_content_type: text/plain
