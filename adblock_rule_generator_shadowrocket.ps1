@@ -80,7 +80,10 @@ $formattedRules = $uniqueRules | Sort-Object | ForEach-Object {"DOMAIN,$_,REJECT
 # 统计生成的规则条目数量
 $ruleCount = $uniqueRules.Count
 
-# 创建文本格式的字符串
+# 获取当前时间（东八区）
+$currentDateTime = [System.TimeZoneInfo]::ConvertTimeBySystemTimeZoneId((Get-Date), 'China Standard Time').ToString("yyyy-MM-dd HH:mm:ss")
+
+# 创建文本格式的字符串，加入生成时间
 $textContent = @"
 # Title: AdBlock_Rule_For_Shadowrocket
 # Description: 适用于Shadowrocket的域名拦截Matcher Ruleset列表，每20分钟更新一次，确保即时同步上游减少误杀
@@ -89,6 +92,7 @@ $textContent = @"
 # LICENSE2：https://github.com/REIJI007/AdBlock_Rule_For_Shadowrocket/blob/main/LICENSE-CC%20BY-NC-SA%204.0
 
 # Generated AdBlock rules
+# Generated on: $currentDateTime (CST)
 # Total entries: $ruleCount
 
 $($formattedRules -join "`n")
