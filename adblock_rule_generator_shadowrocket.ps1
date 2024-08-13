@@ -50,16 +50,20 @@ $webClient = New-Object System.Net.WebClient
 $webClient.Encoding = [System.Text.Encoding]::UTF8
 $webClient.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
 
+# 遍历每个URL并下载其内容
 foreach ($url in $urlList) {
     Write-Host "正在处理: $url"
     Add-Content -Path $logFilePath -Value "正在处理: $url"
     try {
+        # 下载URL内容并按行分割
         $content = $webClient.DownloadString($url)
         $lines = $content -split "`n"
 
+        # 遍历每行内容并过滤出符合特定模式的域名
         foreach ($line in $lines) {
             if ($line -match '^\|\|([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\^$' -or $line -match '^(0\.0\.0\.0|127\.0\.0\.1)\s+([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$' -or $line -match '^address=/([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/$') {
                 $domain = $Matches[1]
+                # 验证域名的格式和长度
                 if ($domain -match '^([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$' -and $domain.Length -le 50) {
                     $uniqueRules.Add($domain) | Out-Null
                 } else {
@@ -81,7 +85,7 @@ $formattedRules = $uniqueRules | Sort-Object | ForEach-Object {"DOMAIN,$_,REJECT
 $ruleCount = $uniqueRules.Count
 
 # 获取当前时间（东八区时间，CST）
-$cstTime = (Get-Date).ToUniversalTime().AddHours(8).ToString("yyyy-MM-dd HH:mm:ss")
+$currentDateTime = (Get-Date).ToUniversalTime().AddHours(8).ToString("yyyy-MM-dd HH:mm:ss")
 
 # 创建文本格式的字符串，加入生成时间
 $textContent = @"
@@ -106,4 +110,5 @@ $textContent | Out-File -FilePath $outputPath -Encoding utf8
 Write-Host "生成的有效规则总数: $ruleCount"
 Add-Content -Path $logFilePath -Value "生成的有效规则总数: $ruleCount"
 
+# 暂停控制台，等待用户按键
 Pause
