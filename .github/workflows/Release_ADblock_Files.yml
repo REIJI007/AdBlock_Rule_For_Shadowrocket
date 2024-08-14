@@ -38,8 +38,21 @@ jobs:
       - name: Fetch tags
         run: git fetch --tags
 
-      # 步骤5：创建新的发布
+      # 步骤5：检查是否有文件变更
+      - name: Check for file changes
+        id: file_changes
+        run: |
+          git add adblock_reject_shadowrocket_rule.conf adblock_reject_shadowrocket_rule.txt
+          if git diff --cached --quiet; then
+            echo "No changes detected, skipping release."
+            echo "skip_release=true" >> $GITHUB_ENV
+          else
+            echo "Changes detected, proceeding with release."
+            echo "skip_release=false" >> $GITHUB_ENV
+
+      # 步骤6：条件发布 - 如果有更改才执行后续步骤
       - name: Create Release
+        if: env.skip_release == 'false'
         id: create_release
         uses: actions/create-release@v1
         env:
@@ -50,8 +63,9 @@ jobs:
           body: "Periodic release of adblock files."  # 发布说明
           draft: false  # 创建正式发布，而非草稿
 
-      # 步骤6：上传 adblock_reject_shadowrocket_rule.conf 文件
+      # 步骤7：条件上传 adblock_reject_shadowrocket_rule.conf 文件
       - name: Upload adblock_reject_shadowrocket_rule.conf
+        if: env.skip_release == 'false'
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}  # 使用 TOKEN 进行身份验证
@@ -61,8 +75,9 @@ jobs:
           asset_name: adblock_reject_shadowrocket_rule.conf
           asset_content_type: text/plain
 
-      # 步骤7：上传 adblock_reject_shadowrocket_rule.txt 文件
+      # 步骤8：条件上传 adblock_reject_shadowrocket_rule.txt 文件
       - name: Upload adblock_reject_shadowrocket_rule.txt
+        if: env.skip_release == 'false'
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}  # 使用 TOKEN 进行身份验证
