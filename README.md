@@ -1,50 +1,44 @@
 [![GPL 3.0 license](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://github.com/REIJI007/AdBlock_Rule_For_Clash/blob/main/LICENSE-GPL3.0)
 [![CC BY-NC-SA 4.0 license](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://github.com/REIJI007/AdBlock_Rule_For_Clash/blob/main/LICENSE-CC%20BY-NC-SA%204.0)
 <!-- 居中的大标题 -->
-<h1 align="center" style="font-size: 70px; margin-bottom: 20px;">AdBlock_Rule_For_Shadowrocket</h1>
+<h1 align="center" style="font-size: 70px; margin-bottom: 20px;">AdBlock_Rule_For_Loon</h1>
 
 <!-- 居中的副标题 -->
-<h2 align="center" style="font-size: 30px; margin-bottom: 40px;">适用于Shadowrocket的广告域名拦截规则,每20分钟更新一次</h2>
+<h2 align="center" style="font-size: 30px; margin-bottom: 40px;">适用于Loon的广告域名拦截规则,每20分钟更新一次</h2>
 
 <!-- 徽章（根据需要调整） -->
 <p align="center" style="margin-bottom: 40px;">
     <img src="https://img.shields.io/badge/last%20commit-today-brightgreen" alt="last commit" style="margin-right: 10px;">
-    <img src="https://img.shields.io/github/forks/REIJI007/AdBlock_Rule_For_Shadowrocket" alt="forks" style="margin-right: 10px;">
-    <img src="https://img.shields.io/github/stars/REIJI007/AdBlock_Rule_For_Shadowrocket" alt="stars" style="margin-right: 10px;">
-    <img src="https://img.shields.io/github/issues/REIJI007/AdBlock_Rule_For_Shadowrocket" alt="issues" style="margin-right: 10px;">
-    <img src="https://img.shields.io/github/license/REIJI007/AdBlock_Rule_For_Shadowrocket" alt="license" style="margin-right: 10px;">
+    <img src="https://img.shields.io/github/forks/REIJI007/AdBlock_Rule_For_Loon" alt="forks" style="margin-right: 10px;">
+    <img src="https://img.shields.io/github/stars/REIJI007/AdBlock_Rule_For_Loon" alt="stars" style="margin-right: 10px;">
+    <img src="https://img.shields.io/github/issues/REIJI007/AdBlock_Rule_For_Loon" alt="issues" style="margin-right: 10px;">
+    <img src="https://img.shields.io/github/license/REIJI007/AdBlock_Rule_For_Loon" alt="license" style="margin-right: 10px;">
 </p>
 
-**一、从多个广告过滤器中提取拦截域名条目，删除重复项，并将它们转换为兼容Shadowrocket的列表格式，其中列表的每一项都写成了Matcher Ruleset格式数组，一行仅一条规则。该列表可以用作Shadowrocket的Matcher Ruleset列表以阻止广告域名， powershell脚本每20分钟自动执行并将生成的文件发布在release中,下面是九个规则集文件地址.**
+**一、从多个广告过滤器中提取拦截域名条目，删除重复项，并将它们转换为兼容loon的列表格式，其中列表的每一项都写成了Matcher Ruleset格式数组，一行仅一条规则。该列表可以用作loon的Matcher Ruleset列表以阻止广告域名， powershell脚本每20分钟自动执行并将生成的文件发布在release中,下面是九个规则集文件地址.**
 
 <hr>
 
-*1、适用于Shadowrocket的外部远程域名conf格式Matcher Ruleset列表 adblock_reject_shadowrocket_rule.conf* 
+*1、适用于Shadowrocket的外部远程域名conf格式Matcher Ruleset列表 adblock_reject_loon.conf* 
 <br>
-*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_rule.conf*
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_loon.conf*
 <br>
+*2、适用于Shadowrocket的外部远程域名txt格式Matcher Ruleset列表 adblock_reject_loon.txt*
 <br>
-*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_ruleset.txt*
-<br>
-<br>
-*2、适用于Shadowrocket的外部远程域名txt格式Matcher Ruleset列表CONF格式拦截DOMAIN-SET规则集 adblock_reject_shadowrocket_domainset.txt* 
-<br>
-*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_domainset.list*
+*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_loon.txt*
 <br>
 <br>
-*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_shadowrocket_domainset.list*
-<br>
-<hr>
 
 
-**二、理论上任何代理拦截域名且符合广告过滤器过滤语法的列表订阅URL都可加入此powershell脚本处理，请自行酌情添加过滤器订阅URL至adblock_rule_generator_shadowrocket.ps1脚本中进行处理，你可将该脚本代码复制到本地文本编辑器制作成.ps1后缀的文件运行在powershell上，注意修改生成文件的路径，最后在shadowrocket的配置中实现调用本地生成的规则集文件，且shadowrocket的[Remote Rules]配置字段写成类似于如下例子**
+
+**二、理论上任何代理拦截域名且符合广告过滤器过滤语法的列表订阅URL都可加入此powershell脚本处理，请自行酌情添加过滤器订阅URL至adblock_rule_generator_loon.ps1脚本中进行处理，你可将该脚本代码复制到本地文本编辑器制作成.ps1后缀的文件运行在powershell上，注意修改生成文件的路径，最后在loon的配置中实现调用本地生成的规则集文件，[Remote Rule]配置字段写成类似于如下例子**
 <br>
 <br>
 *简而言之就是可以让你DIY出希望得到的拦截域名Matcher Ruleset列表，缺点是此做法只适合本地定制使用，当然你也可以像本仓库一样部署到GitHub上面，见仁见智*
 <hr>
 
 ```conf
-# 适用于Shadowrocket的外部本地广告域名拦截规则
+# 适用于Loon的外部本地广告域名拦截规则
 [Rule]
 # 广告域名拦截规则文件路径
 RULE-SET,/path/to/your/file.conf, REJECT
@@ -52,13 +46,13 @@ RULE-SET,/path/to/your/file.conf, REJECT
 <hr>
 
 
-**三、本仓库引用多个广告过滤器，从这些广告过滤器中提取了被拦截条目的域名，剔除了非拦截项并去重，最后做成Matcher Ruleset列表，虽无法做到面面俱到但能减少广告带来的困扰，请自行斟酌考虑使用。碍于shadowrocket的路由行为且秉持着尽可能不误杀的原则，本仓库采取域名完全匹配策略，即匹配命中于拦截列表上的域名完全一致时触发拦截，除此之外的情况给予放行。尽管这会有许多漏网之鱼的广告被放行**
+**三、本仓库引用多个广告过滤器，从这些广告过滤器中提取了被拦截条目的域名，剔除了非拦截项并去重，最后做成Matcher Ruleset列表，虽无法做到面面俱到但能减少广告带来的困扰，请自行斟酌考虑使用。碍于loon的路由行为且秉持着尽可能不误杀的原则，本仓库采取域名完全匹配策略，即匹配命中于拦截列表上的域名完全一致时触发拦截，除此之外的情况给予放行。尽管这会有许多漏网之鱼的广告被放行**
 <br>
 <br>
 
 **四、关于本仓库使用方式：**
 
-  *使用方式一：下载releases中的文件，修改shadowrocket的配置中的[rule]字段作为拦截规则,可直接复制粘贴adblock_reject_shadowrocket_ruleset.txt的内容（需要手动下载更新）*
+  *使用方式一：下载releases中的文件，修改loon配置中的[rule]字段作为拦截规则,可直接复制粘贴adblock_reject_loon.txt的内容（需要手动下载更新）*
 
   *使用方式二：将下面对应格式的配置文件中[Remote Rule]字段内容添加到你的配置文件充当远程规则集，需要特别注意配置文件的缩进和对齐（同步本仓库的云端部署的远程规则集配置)*
 <hr>
@@ -66,7 +60,7 @@ RULE-SET,/path/to/your/file.conf, REJECT
 ```conf
 # 适用于Shadowrocket的外部远程广告域名拦截规则
 [Remote Rule]
-https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_rule.conf, adblock, interval=120, policy=REJECT, auto=true, enabled=true
+https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Loon/main/adblock_reject_loon.conf, adblock, interval=120, policy=REJECT, auto=true, enabled=true
 ```
 
 <hr>
