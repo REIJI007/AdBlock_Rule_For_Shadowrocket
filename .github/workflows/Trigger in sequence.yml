@@ -1,23 +1,23 @@
-name: Trigger in sequence
+name: Trigger Workflows in Sequence
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # 允许手动触发工作流
   schedule:
     - cron: '*/20 * * * *'  # 每20分钟触发一次
 
 jobs:
-  # 触发并验证 Run_AdBlock_Rule_Generator_shadowrocket_rule.yml 工作流
-  trigger_adblock_rule_generator_shadowrocket_rule:
+  # 触发并验证 Run_AdBlock_Rule_Generator_Loon.yml 工作流
+  trigger_adblock_rule_generator_loon:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Trigger and verify Run_AdBlock_Rule_Generator_shadowrocket_rule.yml
+      - name: Trigger and verify Run_AdBlock_Rule_Generator_Loon.yml
         env:
           TOKEN: ${{ secrets.TOKEN }}
         run: |
-          workflow_id="Run_AdBlock_Rule_Generator_shadowrocket_rule.yml"
+          workflow_id="Run_AdBlock_Rule_Generator_Loon.yml"
           ref="main"
           # 触发工作流
           response=$(curl -X POST -H "Authorization: token $TOKEN" \
@@ -47,7 +47,7 @@ jobs:
 
   # 触发并验证 Rename_and_Push_File.yml 工作流
   trigger_rename_and_push_file:
-    needs: trigger_adblock_rule_generator_shadowrocket_rule
+    needs: trigger_adblock_rule_generator_loon
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
