@@ -106,7 +106,7 @@ foreach ($url in $urlList) {
 }
 
 # 对规则进行排序并添加DOMAIN前缀和REJECT操作
-$formattedRules = $uniqueRules | Sort-Object | ForEach-Object {"DOMAIN,$_ ,REJECT"}
+$formattedRules = $uniqueRules | Sort-Object | ForEach-Object {"DOMAIN,$_,REJECT"}
 
 # 统计生成的规则条目数量
 $ruleCount = $uniqueRules.Count
