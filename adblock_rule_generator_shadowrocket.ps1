@@ -61,9 +61,36 @@ foreach ($url in $urlList) {
 
         # 遍历每行内容并过滤出符合特定模式的域名
         foreach ($line in $lines) {
-            if ($line -match '^\|\|([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\^$' -or $line -match '^(0\.0\.0\.0|127\.0\.0\.1)\s+([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$' -or $line -match '^address=/([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/$') {
+            # 匹配 Adblock/Easylist 格式的规则
+            if ($line -match '^\|\|([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\^$') {
                 $domain = $Matches[1]
-                # 验证域名的格式和长度
+                if ($domain -match '^([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$' -and $domain.Length -le 50) {
+                    $uniqueRules.Add($domain) | Out-Null
+                } else {
+                    Add-Content -Path $logFilePath -Value "无效或超长域名: $domain"
+                }
+            }
+            # 匹配 Hosts 文件格式的规则
+            elseif ($line -match '^(0\.0\.0\.0|127\.0\.0\.1)\s+([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$') {
+                $domain = $Matches[2]
+                if ($domain -match '^([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$' -and $domain.Length -le 50) {
+                    $uniqueRules.Add($domain) | Out-Null
+                } else {
+                    Add-Content -Path $logFilePath -Value "无效或超长域名: $domain"
+                }
+            }
+            # 匹配 Dnsmasq/AdGuard 格式的规则
+            elseif ($line -match '^address=/([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/$') {
+                $domain = $Matches[1]
+                if ($domain -match '^([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$' -and $domain.Length -le 50) {
+                    $uniqueRules.Add($domain) | Out-Null
+                } else {
+                    Add-Content -Path $logFilePath -Value "无效或超长域名: $domain"
+                }
+            }
+            # 匹配通配符匹配格式的规则
+            elseif ($line -match '^\|\|([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\^$') {
+                $domain = $Matches[1]
                 if ($domain -match '^([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$' -and $domain.Length -le 50) {
                     $uniqueRules.Add($domain) | Out-Null
                 } else {
@@ -78,8 +105,8 @@ foreach ($url in $urlList) {
     }
 }
 
-# 对规则进行排序并添加DOMAIN,前缀
-$formattedRules = $uniqueRules | Sort-Object | ForEach-Object {"DOMAIN,$_,REJECT"}
+# 对规则进行排序并添加DOMAIN前缀和REJECT操作
+$formattedRules = $uniqueRules | Sort-Object | ForEach-Object {"DOMAIN,$_ ,REJECT"}
 
 # 统计生成的规则条目数量
 $ruleCount = $uniqueRules.Count
