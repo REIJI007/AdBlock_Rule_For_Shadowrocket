@@ -1,5 +1,5 @@
 # 工作流名称
-name: Release_ADblock_file
+name: Release_ADblock_files
 
 # 触发条件
 on:
@@ -33,24 +33,24 @@ jobs:
           draft: false  # 创建正式发布，而非草稿
           prerelease: false  # 不是预发布
 
-      # 步骤4：上传 adblock_reject_shadowrocket_rule.conf 文件
-      - name: Upload adblock_reject_shadowrocket_rule.conf
+      # 步骤4：上传 adblock_reject_loon.conf 文件
+      - name: Upload adblock_reject_loon.conf
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}  # 使用 TOKEN 进行身份验证
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}  # 使用创建发布时生成的URL
-          asset_path: ./adblock_reject_shadowrocket_rule.conf
-          asset_name: adblock_reject_shadowrocket_rule.conf
+          asset_path: ./adblock_reject_loon.conf
+          asset_name: adblock_reject_loon.conf
           asset_content_type: text/plain
 
-      # 步骤5：上传 adblock_reject_shadowrocket_rule.txt 文件
-      - name: Upload adblock_reject_shadowrocket_rule.txt
+      # 步骤5：上传 adblock_reject_loon.txt 文件
+      - name: Upload adblock_reject_loon.txt
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}  # 使用 TOKEN 进行身份验证
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./adblock_reject_shadowrocket_rule.txt
-          asset_name: adblock_reject_shadowrocket_rule.txt
+          asset_path: ./adblock_reject_loon.txt
+          asset_name: adblock_reject_loon.txt
           asset_content_type: text/plain
