@@ -58,7 +58,7 @@ RULE-SET,/path/to/your/file.conf, REJECT
 <hr>
 
 ```conf
-# 适用于Shadowrocket的外部远程广告域名拦截规则
+# 适用于Loon的外部远程广告域名拦截规则
 [Remote Rule]
 https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Loon/main/adblock_reject_loon.conf, adblock, interval=120, policy=REJECT, auto=true, enabled=true
 ```
