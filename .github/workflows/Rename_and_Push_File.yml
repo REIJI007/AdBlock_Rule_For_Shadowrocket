@@ -13,10 +13,10 @@ jobs:
 
     - name: Rename file extension  # 重命名文件扩展名
       run: |
-        if [ -f "./adblock_reject_shadowrocket_rule.conf" ]; then
-          mv ./adblock_reject_shadowrocket_rule.conf ./adblock_reject_shadowrocket_rule.txt
+        if [ -f "./adblock_reject_loon.conf" ]; then
+          mv ./adblock_reject_loon.conf ./adblock_reject_loon.txt
         else
-          echo "File adblock_reject_shadowrocket_rule.conf does not exist"
+          echo "File adblock_reject_loon.conf does not exist"
           exit 1
         fi
 
@@ -27,8 +27,8 @@ jobs:
       run: |
         git config --global user.name 'github-actions'  # 配置提交用户名
         git config --global user.email 'github-actions@github.com'  # 配置提交邮箱
-        git add -f adblock_reject_shadowrocket_rule.txt  # 强制添加重命名后的文件
-        git commit -m 'Rename and push adblock_reject_shadowrocket_rule.txt' || git commit --allow-empty -m 'Empty commit to force push'  # 提交更改，若无更改则提交空更改
+        git add -f adblock_reject_loon.txt  # 强制添加重命名后的文件
+        git commit -m 'Rename and push adblock_reject_loon.txt' || git commit --allow-empty -m 'Empty commit to force push'  # 提交更改，若无更改则提交空更改
         git push --force origin HEAD  # 强制推送更改
       env:
         TOKEN: ${{ secrets.TOKEN }}  # 使用 GitHub 密钥进行身份验证
