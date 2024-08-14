@@ -7,7 +7,6 @@ on:
     - cron: '*/20 * * * *'  # 每20分钟运行一次
   workflow_dispatch:  # 允许手动触发工作流
 
-# 工作流程中的作业
 jobs:
   create-release:
     runs-on: ubuntu-latest  # 在最新版本的 Ubuntu 上运行
@@ -16,56 +15,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # 步骤2：获取当前时间
+      # 步骤2：获取当前时间并设置时间戳
       - name: Get current time
         id: current-time
-        run: echo "time=$(date +'%y%m%d%H%M')" >> $GITHUB_ENV  # 将时间保存为环境变量
+        run: echo "time=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV  # 将时间保存为环境变量
 
-      # 步骤3：检查标签是否存在并删除重复标签
-      - name: Check if tag exists and delete
-        id: check_tag
-        run: |
-          TAG="release-${{ env.time }}"
-          if git rev-parse -q --verify "refs/tags/$TAG"; then
-            echo "Tag exists. Deleting tag $TAG."
-            git tag -d "$TAG"
-            git push origin --delete "$TAG"
-          else
-            echo "Tag does not exist."
-          fi
-
-      # 步骤4：确保远程仓库的标签删除
-      - name: Fetch tags
-        run: git fetch --tags
-
-      # 步骤5：检查是否有文件变更
-      - name: Check for file changes
-        id: file_changes
-        run: |
-          git add adblock_reject_shadowrocket_rule.conf adblock_reject_shadowrocket_rule.txt
-          if git diff --cached --quiet; then
-            echo "No changes detected, skipping release."
-            echo "skip_release=true" >> $GITHUB_ENV
-          else
-            echo "Changes detected, proceeding with release."
-            echo "skip_release=false" >> $GITHUB_ENV
-
-      # 步骤6：条件发布 - 如果有更改才执行后续步骤
+      # 步骤3：创建新的发布
       - name: Create Release
-        if: env.skip_release == 'false'
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 默认 token 进行身份验证
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}  # 使用存储在仓库密钥中的 TOKEN 进行身份验证
         with:
-          tag_name: release-${{ env.time }}  # 使用时间戳作为标签名
+          tag_name: release-${{ env.time }}  # 使用时间戳作为标签名，确保唯一性
           release_name: Release ${{ env.time }}  # 使用时间戳作为发布名称
-          body: "Periodic release of adblock files."  # 发布说明
+          body: "Automated periodic release of adblock files."  # 发布说明
           draft: false  # 创建正式发布，而非草稿
+          prerelease: false  # 不是预发布
 
-      # 步骤7：条件上传 adblock_reject_shadowrocket_rule.conf 文件
+      # 步骤4：上传 adblock_reject_shadowrocket_rule.conf 文件
       - name: Upload adblock_reject_shadowrocket_rule.conf
-        if: env.skip_release == 'false'
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}  # 使用 TOKEN 进行身份验证
@@ -75,9 +44,8 @@ jobs:
           asset_name: adblock_reject_shadowrocket_rule.conf
           asset_content_type: text/plain
 
-      # 步骤8：条件上传 adblock_reject_shadowrocket_rule.txt 文件
+      # 步骤5：上传 adblock_reject_shadowrocket_rule.txt 文件
       - name: Upload adblock_reject_shadowrocket_rule.txt
-        if: env.skip_release == 'false'
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}  # 使用 TOKEN 进行身份验证
