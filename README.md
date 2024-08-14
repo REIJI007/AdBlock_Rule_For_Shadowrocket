@@ -58,14 +58,14 @@ RULE-SET,/path/to/your/file.conf, REJECT
 
 **四、关于本仓库使用方式：**
 
-  *使用方式一：下载releases中的文件，修改shadowrocket的配置中的[rules]字段作为拦截规则,可直接复制粘贴adblock_reject_shadowrocket_ruleset.txt的内容（需要手动下载更新）*
+  *使用方式一：下载releases中的文件，修改shadowrocket的配置中的[rule]字段作为拦截规则,可直接复制粘贴adblock_reject_shadowrocket_ruleset.txt的内容（需要手动下载更新）*
 
-  *使用方式二：将下面对应格式的配置文件中[rule]字段内容添加到你的配置文件充当远程规则集，需要特别注意配置文件的缩进和对齐（同步本仓库的云端部署的远程规则集配置)*
+  *使用方式二：将下面对应格式的配置文件中[Remote Rule]字段内容添加到你的配置文件充当远程规则集，需要特别注意配置文件的缩进和对齐（同步本仓库的云端部署的远程规则集配置)*
 <hr>
 
 ```conf
 # 适用于Shadowrocket的外部远程广告域名拦截规则
-[Remote Rules]
+[Remote Rule]
 https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_shadowrocket_rule.conf, adblock, interval=120, policy=REJECT, auto=true, enabled=true
 ```
 
