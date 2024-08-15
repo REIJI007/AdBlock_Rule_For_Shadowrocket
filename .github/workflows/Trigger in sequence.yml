@@ -1,19 +1,17 @@
-name: Trigger Workflows in Sequence
+name: Trigger in sequence
 
 on:
-  workflow_dispatch:  # 允许手动触发工作流
+  workflow_dispatch:
   schedule:
     - cron: '*/20 * * * *'  # 每20分钟触发一次
 
 jobs:
-  # 触发并验证 Run_AdBlock_Rule_Generator_Loon.yml 工作流
   trigger_adblock_rule_generator_loon:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      - name: Trigger and verify Run_AdBlock_Rule_Generator_Loon.yml
+      - name: Trigger and verify Run_AdBlock_Rule_Generator_Loon
         env:
           TOKEN: ${{ secrets.TOKEN }}
         run: |
@@ -22,7 +20,7 @@ jobs:
           # 触发工作流
           response=$(curl -X POST -H "Authorization: token $TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
-            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/$workflow_id/dispatches" \
+            "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Loon/actions/workflows/$workflow_id/dispatches" \
             -d "{\"ref\":\"$ref\"}")
           echo "Triggered workflow $workflow_id: $response"
 
@@ -30,7 +28,7 @@ jobs:
           while : ; do
             status=$(curl -s -H "Authorization: token $TOKEN" \
               -H "Accept: application/vnd.github.v3+json" \
-              "https://api.github.com/repos/${{ github.repository }}/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
+              "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Loon/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
               | jq -r '.workflow_runs[0].conclusion')
 
             if [[ "$status" == "success" ]]; then
@@ -45,15 +43,13 @@ jobs:
             fi
           done
 
-  # 触发并验证 Rename_and_Push_File.yml 工作流
   trigger_rename_and_push_file:
     needs: trigger_adblock_rule_generator_loon
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      - name: Trigger and verify Rename_and_Push_File.yml
+      - name: Trigger and verify Rename_and_Push_File
         env:
           TOKEN: ${{ secrets.TOKEN }}
         run: |
@@ -62,7 +58,7 @@ jobs:
           # 触发工作流
           response=$(curl -X POST -H "Authorization: token $TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
-            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/$workflow_id/dispatches" \
+            "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Loon/actions/workflows/$workflow_id/dispatches" \
             -d "{\"ref\":\"$ref\"}")
           echo "Triggered workflow $workflow_id: $response"
 
@@ -70,7 +66,7 @@ jobs:
           while : ; do
             status=$(curl -s -H "Authorization: token $TOKEN" \
               -H "Accept: application/vnd.github.v3+json" \
-              "https://api.github.com/repos/${{ github.repository }}/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
+              "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Loon/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
               | jq -r '.workflow_runs[0].conclusion')
 
             if [[ "$status" == "success" ]]; then
@@ -85,15 +81,13 @@ jobs:
             fi
           done
 
-  # 触发并验证 Release_ADblock_Files.yml 工作流
-  release_adblock_files:
+  trigger_release_adblock_files:
     needs: trigger_rename_and_push_file
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      - name: Trigger and verify Release_ADblock_Files.yml
+      - name: Trigger and verify Release_ADblock_Files
         env:
           TOKEN: ${{ secrets.TOKEN }}
         run: |
@@ -102,7 +96,7 @@ jobs:
           # 触发工作流
           response=$(curl -X POST -H "Authorization: token $TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
-            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/$workflow_id/dispatches" \
+            "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Loon/actions/workflows/$workflow_id/dispatches" \
             -d "{\"ref\":\"$ref\"}")
           echo "Triggered workflow $workflow_id: $response"
 
@@ -110,7 +104,7 @@ jobs:
           while : ; do
             status=$(curl -s -H "Authorization: token $TOKEN" \
               -H "Accept: application/vnd.github.v3+json" \
-              "https://api.github.com/repos/${{ github.repository }}/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
+              "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Loon/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
               | jq -r '.workflow_runs[0].conclusion')
 
             if [[ "$status" == "success" ]]; then
