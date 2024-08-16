@@ -22,13 +22,13 @@
 *1、适用于Loon的外部远程域名conf格式Matcher Ruleset列表 adblock_reject_loon.conf* 
 <br>
 <br>
-*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Shadowrocket/main/adblock_reject_loon.conf*
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Loon/main/adblock_reject_loon.conf*
 <br>
 <br>
 *2、适用于Loon的外部远程域名txt格式Matcher Ruleset列表 adblock_reject_loon.txt*
 <br>
 <br>
-*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Shadowrocket@main/adblock_reject_loon.txt*
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Loon/main/adblock_reject_loon.txt*
 <br>
 <br>
 
