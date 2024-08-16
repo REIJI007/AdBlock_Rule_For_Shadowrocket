@@ -43,6 +43,13 @@ jobs:
             fi
           done
 
+          # 等待90秒后开始下一个工作流
+          echo "Waiting for 90 seconds before starting the next workflow..."
+          sleep 90
+
+
+
+
   trigger_rename_and_push_file:
     needs: trigger_adblock_rule_generator_loon
     runs-on: ubuntu-latest
@@ -80,6 +87,14 @@ jobs:
               sleep 30
             fi
           done
+
+          # 等待90秒后开始下一个工作流
+          echo "Waiting for 90 seconds before starting the next workflow..."
+          sleep 90
+
+
+
+
 
   trigger_release_adblock_files:
     needs: trigger_rename_and_push_file
