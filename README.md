@@ -109,6 +109,6 @@ https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Loon/main/adblock_re
 13、guandasheng (https://github.com/guandasheng/adguardhome)
 
 ## LICENSE
-- [CC-BY-SA-4.0 License](./LICENSE-CC-BY-SA-4.0.md)
+- [CC-BY-SA-4.0 License](https://github.com/REIJI007/AdBlock_Rule_For_Loon/blob/main/LICENSE-CC%20BY-NC-SA%204.0)
 - [GPL-3.0 License](https://github.com/REIJI007/AdBlock_Rule_For_Loon/blob/main/LICENSE-GPL3.0)
 
