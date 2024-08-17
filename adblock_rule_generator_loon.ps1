@@ -55,47 +55,29 @@ foreach ($url in $urlList) {
     Write-Host "正在处理: $url"
     Add-Content -Path $logFilePath -Value "正在处理: $url"
     try {
-        # 下载URL内容并按行分割
         $content = $webClient.DownloadString($url)
         $lines = $content -split "`n"
 
-        # 遍历每行内容并过滤出符合特定模式的域名
         foreach ($line in $lines) {
             # 匹配 Adblock/Easylist 格式的规则
             if ($line -match '^\|\|([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\^$') {
                 $domain = $Matches[1]
-                if ($domain -match '^([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$' -and $domain.Length -le 50) {
-                    $uniqueRules.Add($domain) | Out-Null
-                } else {
-                    Add-Content -Path $logFilePath -Value "无效或超长域名: $domain"
-                }
+                $uniqueRules.Add($domain) | Out-Null
             }
             # 匹配 Hosts 文件格式的规则
             elseif ($line -match '^(0\.0\.0\.0|127\.0\.0\.1)\s+([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$') {
                 $domain = $Matches[2]
-                if ($domain -match '^([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$' -and $domain.Length -le 50) {
-                    $uniqueRules.Add($domain) | Out-Null
-                } else {
-                    Add-Content -Path $logFilePath -Value "无效或超长域名: $domain"
-                }
+                $uniqueRules.Add($domain) | Out-Null
             }
             # 匹配 Dnsmasq/AdGuard 格式的规则
             elseif ($line -match '^address=/([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/$') {
                 $domain = $Matches[1]
-                if ($domain -match '^([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$' -and $domain.Length -le 50) {
-                    $uniqueRules.Add($domain) | Out-Null
-                } else {
-                    Add-Content -Path $logFilePath -Value "无效或超长域名: $domain"
-                }
+                $uniqueRules.Add($domain) | Out-Null
             }
             # 匹配通配符匹配格式的规则
             elseif ($line -match '^\|\|([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\^$') {
                 $domain = $Matches[1]
-                if ($domain -match '^([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$' -and $domain.Length -le 50) {
-                    $uniqueRules.Add($domain) | Out-Null
-                } else {
-                    Add-Content -Path $logFilePath -Value "无效或超长域名: $domain"
-                }
+                $uniqueRules.Add($domain) | Out-Null
             }
         }
     }
