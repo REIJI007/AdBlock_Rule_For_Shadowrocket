@@ -103,7 +103,6 @@ $textContent = @"
 # Homepage: https://github.com/REIJI007/AdBlock_Rule_For_Loon
 # LICENSE1：https://github.com/REIJI007/AdBlock_Rule_For_Loon/blob/main/LICENSE-GPL3.0
 # LICENSE2：https://github.com/REIJI007/AdBlock_Rule_For_Loon/blob/main/LICENSE-CC%20BY-NC-SA%204.0
-
 # Generated AdBlock rules
 # Generated on: $currentDateTime (CST)
 # Total entries: $ruleCount
