@@ -106,7 +106,7 @@ https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Loon/main/adblock_re
 
 12、HyperADRules (https://github.com/Lynricsy/HyperADRules)
 
-13、xinggsf <br>(https://github.com/xinggsf/Adblock-Plus-Rule)
+13、xinggsf (https://github.com/xinggsf/Adblock-Plus-Rule)
 
 
 ## LICENSE
