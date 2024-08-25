@@ -1,5 +1,5 @@
 # Title: AdBlock_Rule_For_Loon
-# Description: 适用于Loon的域名拦截Matcher Ruleset列表，每20分钟更新一次，确保即时同步上游减少误杀
+# Description: 适用于Loon的域名拦截规则集，每20分钟更新一次，确保即时同步上游减少误杀
 # Homepage: https://github.com/REIJI007/AdBlock_Rule_For_Loon
 # LICENSE1：https://github.com/REIJI007/AdBlock_Rule_For_Loon/blob/main/LICENSE-GPL3.0
 # LICENSE2：https://github.com/REIJI007/AdBlock_Rule_For_Loon/blob/main/LICENSE-CC%20BY-NC-SA%204.0
@@ -173,7 +173,7 @@ $generationTime = (Get-Date).ToUniversalTime().AddHours(8).ToString("yyyy-MM-dd 
 # 创建文本格式的字符串
 $textContent = @"
 # Title: AdBlock_Rule_For_Loon
-# Description: 适用于Loon的域名拦截Matcher Ruleset列表，每20分钟更新一次，确保即时同步上游减少误杀
+# Description: 适用于Loon的域名拦截规则集，每20分钟更新一次，确保即时同步上游减少误杀
 # Homepage: https://github.com/REIJI007/AdBlock_Rule_For_Loon
 # LICENSE1：https://github.com/REIJI007/AdBlock_Rule_For_Loon/blob/main/LICENSE-GPL3.0
 # LICENSE2：https://github.com/REIJI007/AdBlock_Rule_For_Loon/blob/main/LICENSE-CC%20BY-NC-SA%204.0
