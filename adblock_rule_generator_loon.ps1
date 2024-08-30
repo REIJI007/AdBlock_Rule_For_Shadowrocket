@@ -177,7 +177,7 @@ $finalRules = $uniqueRules | Where-Object { -not $excludedDomains.Contains($_) }
 
 
 # 对规则进行排序并添加DOMAIN前缀和REJECT操作
-$formattedRules = $uniqueRules | Sort-Object | ForEach-Object {"DOMAIN-SUFFIX,$_,REJECT"}
+$formattedRules = $finalRules | Sort-Object | ForEach-Object {"DOMAIN-SUFFIX,$_,REJECT"}
 
 
 
