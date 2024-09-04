@@ -15,25 +15,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # 步骤2：获取当前时间并设置时间戳
+      # 步骤2：获取当前时间
       - name: Get current time
         id: current-time
-        run: echo "time=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV  # 将时间保存为环境变量
+        run: echo "time=$(date +'%y%m%d%H%M')" >> $GITHUB_ENV # 将时间保存为环境变量
 
-      # 步骤3：创建新的发布
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}  # 使用存储在仓库密钥中的 TOKEN 进行身份验证
-        with:
-          tag_name: release-${{ env.time }}  # 使用时间戳作为标签名，确保唯一性
-          release_name: Release ${{ env.time }}  # 使用时间戳作为发布名称
-          body: "Automated periodic release of adblock files."  # 发布说明
-          draft: false  # 创建正式发布，而非草稿
-          prerelease: false  # 不是预发布
+      # 步骤3：更新时间戳文件
+      - name: Update timestamp file
+        run: echo "${{ env.time }}" > timestamp.txt # 将时间写入 timestamp.txt 文件
 
-      # 步骤4：上传 adblock_reject_loon.conf 文件
+      # 步骤4：拉取最新的 main 分支并合并
+      - name: Pull and merge latest main
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git fetch origin main
+          git merge origin/main
+        env: 
+          TOKEN: ${{ secrets.TOKEN }} # 使用存储在仓库密钥中的 TOKEN
+
+      # 步骤5：上传 adblock_reject_loon.conf 文件
       - name: Upload adblock_reject_loon.conf
         uses: actions/upload-release-asset@v1
         env:
@@ -44,7 +45,7 @@ jobs:
           asset_name: adblock_reject_loon.conf
           asset_content_type: text/plain
 
-      # 步骤5：上传 adblock_reject_loon.txt 文件
+      # 步骤6：上传 adblock_reject_loon.txt 文件
       - name: Upload adblock_reject_loon.txt
         uses: actions/upload-release-asset@v1
         env:
