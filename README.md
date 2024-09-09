@@ -58,7 +58,7 @@ https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Loon/main/adblock_re
 <hr>
 
 
-  *使用方式三:下载规则集adblock_reject_loon.conf保存本地作为本地规则集，修改配置如下进行引用
+  *使用方式三:下载规则集adblock_reject_loon.conf保存本地作为本地规则集，修改配置如下进行引用*
 
 
 <hr>
