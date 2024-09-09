@@ -36,16 +36,7 @@
 <br>
 <br>
 *简而言之就是可以让你DIY出希望得到的拦截域名Matcher Ruleset列表，缺点是此做法只适合本地定制使用，当然你也可以像本仓库一样部署到GitHub上面，见仁见智*
-<hr>
-
-```conf
-# 适用于Loon的外部本地广告域名拦截规则
-[Rule]
-# 广告域名拦截规则文件路径
-RULE-SET,/path/to/your/file.conf, REJECT
-```
-<hr>
-
+<br>
 
 **三、本仓库引用多个广告过滤器，从这些广告过滤器中提取了被拦截条目的域名，剔除了非拦截项并去重，最后做成rule_set规则集，虽无法做到面面俱到但能减少广告带来的困扰，请自行斟酌考虑使用。碍于Loon的路由行为且秉持着尽可能不误杀的原则，本仓库采取域名完全匹配策略，即匹配命中于拦截列表上的域名完全一致时触发拦截，除此之外的情况给予放行。尽管这会有许多漏网之鱼的广告被放行**
 <br>
@@ -65,6 +56,22 @@ https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Loon/main/adblock_re
 ```
 
 <hr>
+
+
+  *使用方式三:下载规则集adblock_reject_loon.conf保存本地作为本地规则集，修改配置如下进行引用
+
+
+<hr>
+
+```conf
+# 适用于Loon的外部本地广告域名拦截规则
+[Rule]
+# 广告域名拦截规则文件路径
+RULE-SET,/path/to/your/file.conf, REJECT
+```
+<hr>
+
+
 
 **五、关于本仓库的使用效果为什么没有普通广告过滤器效果好的疑问解答：**
 <br>
