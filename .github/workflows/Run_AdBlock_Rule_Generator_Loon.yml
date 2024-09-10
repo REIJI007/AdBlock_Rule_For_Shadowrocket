@@ -31,14 +31,6 @@ jobs:
     - name: Run adblock_rule_generator_loon_conf.ps1  # 运行 adblock_rule_generator_loon_conf.ps1 脚本
       run: pwsh -File ./adblock_rule_generator_loon_conf.ps1  # 使用 PowerShell 7 运行脚本
 
-    - name: Ensure adblock_reject_Loon.conf exists  # 确保 adblock_reject_Loon.conf 文件生成或存在
-      run: |
-        if [ -f "./adblock_reject_Loon.conf" ]; then
-          echo "File exists"
-        else
-          echo "File does not exist, generating an empty file."
-          touch ./adblock_reject_Loon.conf  # 如果脚本未生成文件，则创建一个空文件
-
     - name: Force Add and Commit Loon conf file  # 强制添加并提交 Loon conf 文件
       run: |
         git config --global user.name 'github-actions'  # 配置提交用户名
