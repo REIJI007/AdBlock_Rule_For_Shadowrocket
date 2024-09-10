@@ -28,29 +28,29 @@ jobs:
         sudo apt-get install -y powershell  # 安装 PowerShell 7
         rm packages-microsoft-prod.deb  # 删除包配置文件
 
-    - name: Run adblock_rule_generator_loon_txt.ps1  # 运行 adblock_rule_generator_loon_txt.ps1 脚本
-      run: pwsh -File ./adblock_rule_generator_loon_txt.ps1  # 使用 PowerShell 7 运行脚本
+    - name: Run adblock_rule_generator_loon_conf.ps1  # 运行 adblock_rule_generator_loon_conf.ps1 脚本
+      run: pwsh -File ./adblock_rule_generator_loon_conf.ps1  # 使用 PowerShell 7 运行脚本
 
     - name: List files in the directory  # 列出当前目录下的文件
       run: ls -la
 
-    - name: Check adblock_reject_loon.txt file existence  # 检查 adblock_reject_loon.txt 文件是否存在
+    - name: Check adblock_reject_loon.conf file existence  # 检查 adblock_reject_loon.conf 文件是否存在
       run: |
-        if [ -f "./adblock_reject_loon.txt" ]; then
+        if [ -f "./adblock_reject_loon.conf" ]; then
           echo "File exists"
         else
           echo "File does not exist"
           exit 1
         fi
 
-    - name: Force Add and Commit Loon ruleset txt file  # 强制添加并提交 Loon ruleset txt 文件
+    - name: Force Add and Commit Loon ruleset conf file  # 强制添加并提交 Loon ruleset conf 文件
       run: |
         git config --global user.name 'github-actions'  # 配置提交用户名
         git config --global user.email 'github-actions@github.com'  # 配置提交邮箱
-        git add -f adblock_reject_loon.txt  # 强制添加 adblock_reject_loon.txt 文件
-        git commit -m 'Update adblock_reject_loon.txt' || git commit --allow-empty -m 'Empty commit to force push'  # 提交更改，若无更改则提交空更改
+        git add -f adblock_reject_loon.conf  # 强制添加 adblock_reject_loon.conf 文件
+        git commit -m 'Update adblock_reject_loon.conf' || git commit --allow-empty -m 'Empty commit to force push'  # 提交更改，若无更改则提交空更改
 
-    - name: Retry Push Loon ruleset txt file  # 推送 Loon ruleset txt 文件，失败时重试
+    - name: Retry Push Loon ruleset conf file  # 推送 Loon ruleset conf 文件，失败时重试
       env:
         TOKEN: ${{ secrets.TOKEN }}  # 使用 GitHub 密钥进行身份验证
       run: |
