@@ -219,7 +219,7 @@ $finalRules = $uniqueRules | Where-Object { -not $excludedDomains.Contains($_) }
 
 
 # 对规则进行排序并添加DOMAIN前缀和REJECT操作
-$formattedRules = $finalRules | Sort-Object | ForEach-Object {"DOMAIN-SUFFIX,$_,REJECT"}
+$formattedRules = $finalRules | Sort-Object | ForEach-Object {"DOMAIN-SUFFIX,$_"}
 
 
 
@@ -250,7 +250,7 @@ $($formattedRules -join "`n")
 "@
 
 # 定义输出文件路径
-$outputPath = "$PSScriptRoot/adblock_reject_loon.txt"
+$outputPath = "$PSScriptRoot/adblock_reject_conf.txt"
 $textContent | Out-File -FilePath $outputPath -Encoding utf8
 
 # 输出生成的有效规则总数
