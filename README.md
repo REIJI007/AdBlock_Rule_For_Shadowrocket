@@ -162,7 +162,9 @@ RULE-SET,/path/to/your/file.conf, REJECT
 35、badmojr
 (https://github.com/badmojr/1Hosts)<br>
 36、afwfv
-(https://github.com/afwfv/DD-AD)
+https://github.com/afwfv/DD-AD<br>
+37、paulgb
+https://github.com/paulgb/BarbBlock<br>
 
 
 
