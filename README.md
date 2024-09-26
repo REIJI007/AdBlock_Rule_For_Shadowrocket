@@ -18,17 +18,25 @@
 **一、从多个广告过滤器中提取拦截域名条目，删除重复项，并将它们转换为兼容loon的列表格式，其中列表的每一项都写成了Matcher Ruleset格式数组，一行仅一条规则。该列表可以用作loon的Matcher Ruleset列表以阻止广告域名， powershell脚本每20分钟自动执行并将生成的文件发布在release中,下面是九个规则集文件地址.**
 
 <hr>
-
-*1、适用于Loon的外部远程域名conf格式Matcher Ruleset列表 adblock_reject_loon.conf* 
-<br>
-*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Loon/main/adblock_reject_loon.conf*
-<br>
-<br>
-*2、适用于Loon的外部远程域名txt格式Matcher Ruleset列表 adblock_reject_loon.txt*
-<br>
-*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Loon/main/adblock_reject_loon.txt*
-<br>
-<br>
+<table border="1" style="border-collapse: collapse; width: 100%;">
+  <tr>
+    <td>订阅地址:</td>
+  </tr>
+  <tr>
+    <td>CONF</td>
+    <td>
+      <strong><a href="https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Loon/main/adblock_reject_loon.conf">原始链接</a></strong> | 
+      <strong><a href="https://adblockproxy.miyajimareji007.workers.dev/loon_adblock.conf">Cloudflare加速链接</a></strong>
+    </td>
+  </tr>
+  <tr>
+    <td>TXT</td>
+    <td>
+      <strong><a href="https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Loon/main/adblock_reject_loon.txt">原始链接</a></strong> | 
+      <strong><a href="https://adblockproxy.miyajimareji007.workers.dev/loon_adblock.txt">Cloudflare加速链接</a></strong>
+    </td>
+  </tr>
+</table>
 
 <hr>
 
