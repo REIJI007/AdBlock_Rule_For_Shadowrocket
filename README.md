@@ -25,15 +25,15 @@
   <tr>
     <td>CONF</td>
     <td>
-      <strong><a href="https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Loon/main/adblock_reject_loon.conf">原始链接</a></strong> | 
-      <strong><a href="https://adblockproxy.miyajimareji007.workers.dev/loon_adblock.conf">Cloudflare加速链接</a></strong>
+      <strong><a href="https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Loon/main/adblock_reject_loon.conf">Github原始链接</a></strong> | 
+      <strong><a href="https://adblock-loon-conf.reiji007.org/">Cloudflare加速链接</a></strong>
     </td>
   </tr>
   <tr>
     <td>TXT</td>
     <td>
       <strong><a href="https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Loon/main/adblock_reject_loon.txt">原始链接</a></strong> | 
-      <strong><a href="https://adblockproxy.miyajimareji007.workers.dev/loon_adblock.txt">Cloudflare加速链接</a></strong>
+      <strong><a href="https://adblock-loon-txt.reiji007.org/">Cloudflare加速链接</a></strong>
     </td>
   </tr>
 </table>
