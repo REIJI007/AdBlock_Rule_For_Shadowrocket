@@ -32,7 +32,7 @@
   <tr>
     <td>TXT</td>
     <td>
-      <strong><a href="https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Loon/main/adblock_reject_loon.txt">原始链接</a></strong> | 
+      <strong><a href="https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Loon/main/adblock_reject_loon.txt">Github原始链接</a></strong> | 
       <strong><a href="https://adblock-loon-txt.reiji007.org/">Cloudflare加速链接</a></strong>
     </td>
   </tr>
